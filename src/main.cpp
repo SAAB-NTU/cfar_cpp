@@ -30,6 +30,8 @@ int main()
     // If you need integer values
     result.convertTo(final_result, CV_8U, 255.0);  // Convert to 8-bit unsigned integer
 
+    std::cout << "image dimensions: " << final_result.rows << " " << final_result.cols << std::endl;
+
     cv::imshow("Image", final_result);
     cv::waitKey(0); // Wait for a key press
 

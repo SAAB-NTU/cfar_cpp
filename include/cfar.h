@@ -30,4 +30,8 @@ class CFAR
         double retrieve_params(int train_cells, int guard_cells, float false_alarm_rate);
         cv::Mat soca(cv::Mat& img);
         float calc_rect_sum(cv::Mat& img, int x, int y, int w, int h);
+        int get_train_cells();
+        int get_guard_cells();
+        float get_false_alarm_rate();
+        float get_threshold_factor_soca();
 };

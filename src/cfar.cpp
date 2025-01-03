@@ -140,3 +140,19 @@ float CFAR::calc_rect_sum(cv::Mat& img, int x, int y, int w, int h) {
 
     return sum;
 }
+
+int CFAR::get_train_cells() {
+    return this->train_cells;
+}
+
+int CFAR::get_guard_cells() {
+    return this->guard_cells;
+}
+
+float CFAR::get_false_alarm_rate() {
+    return this->false_alarm_rate;
+}
+
+float CFAR::get_threshold_factor_soca() {
+    return this->threshold_factor_SOCA;
+}

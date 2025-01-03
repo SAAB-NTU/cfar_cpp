@@ -1,0 +1,6 @@
+std_msgs/Header header
+string mode
+int64 train_cells
+int64 guard_cells
+float64 false_alarm_rate
+float64 threshold_factor

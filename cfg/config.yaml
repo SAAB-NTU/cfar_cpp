@@ -1,0 +1,6 @@
+cfar_node:
+  ros__parameters:
+    mode: 'soca'
+    train_cells: 12
+    guard_cells: 4
+    false_alarm_rate: 0.97
