@@ -9,30 +9,34 @@
 class CfarNode: public rclcpp::Node
 {
     public:
-        CfarNode() : Node("cfar_node"), count_(0), cfar_filter(12, 4, 0.97) {
+        CfarNode() : Node("cfar_node"), count_(0) {
+
+
             sonar_subscriber_ = this->create_subscription<sensor_msgs::msg::Image>("/oculus_sonar/ping_image", 10, std::bind(&CfarNode::topic_callback, this, std::placeholders::_1));
-            cfar_info_publisher_ = this->create_publisher<cfar_cpp::msg::CfarInfo>("/cfar/info", 10);
             cfar_publisher_ = this->create_publisher<sensor_msgs::msg::Image>("/cfar/image", 10);
+            
+            rclcpp::QoS qos_latch(1);
+            qos_latch.durability(rclcpp::DurabilityPolicy::TransientLocal);
+            cfar_info_publisher_ = this->create_publisher<cfar_cpp::msg::CfarInfo>("/cfar/info", qos_latch);
 
             // Read from config.yaml
             this->declare_parameter<std::string>("mode","soca");
-            this->declare_parameter<int>("train_cells",12);
-            this->declare_parameter<int>("guard_cells",4);
+            this->declare_parameter<int>("train_cells",16);
+            this->declare_parameter<int>("guard_cells",2);
             this->declare_parameter<float>("false_alarm_rate",0.97);
 
             this->get_parameter("mode", this->mode);
             this->get_parameter("train_cells", this->train_cells);
             this->get_parameter("guard_cells", this->guard_cells);
             this->get_parameter("false_alarm_rate", this->false_alarm_rate);
-
+            
             cfar_filter = CFAR(
                 this->train_cells, 
                 this->guard_cells, 
                 this->false_alarm_rate
             );
             
-            RCLCPP_INFO(this->get_logger(), "Constructor finished");
-
+            this->publish_cfar_info();
         }
     
     private:
@@ -41,7 +45,8 @@ class CfarNode: public rclcpp::Node
             info.mode = this->mode;
             info.train_cells = cfar_filter.get_train_cells();
             info.guard_cells = cfar_filter.get_guard_cells();
-            info.false_alarm_rate = cfar_filter.get_false_alarm_rate();
+            // Round to 3 decimal places
+            info.false_alarm_rate = round(cfar_filter.get_false_alarm_rate() * 1000.0) / 1000.0;
             info.threshold_factor = cfar_filter.get_threshold_factor_soca();
 
             cfar_info_publisher_->publish(info);
@@ -55,7 +60,6 @@ class CfarNode: public rclcpp::Node
                     RCLCPP_ERROR(this->get_logger(), "Received empty image");
                     return;
                 }
-
                 cv::Mat result = cfar_filter.soca(cv_ptr->image);
                 result.convertTo(result, CV_8U, 255.0); 
 
@@ -65,7 +69,6 @@ class CfarNode: public rclcpp::Node
                 cv_image.header = msg->header;
                 auto msg = cv_image.toImageMsg();
 
-                // Convert to sensor_msgs::Image message
                 sensor_msgs::msg::Image img_msg;
                 cv_image.toImageMsg(img_msg);
                 msg->step = result.cols;

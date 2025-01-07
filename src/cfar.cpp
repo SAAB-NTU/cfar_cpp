@@ -1,5 +1,10 @@
 #include <cfar.h>
 
+CFAR::CFAR()
+{
+    
+}
+
 CFAR::CFAR(int train_cells, int guard_cells, float false_alarm_rate)
 {
     assert(train_cells%2 == 0);

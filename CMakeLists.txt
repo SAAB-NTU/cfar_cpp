@@ -23,6 +23,7 @@ find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(image_transport REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
 # Generate interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -48,12 +49,11 @@ add_executable(cfar src/main.cpp)
 add_executable(cfar_node src/cfar_node.cpp)
 
 # Add dependencies
-ament_target_dependencies(cfar 
-  rclcpp 
-  std_msgs 
-  sensor_msgs
-)
-
+# ament_target_dependencies(cfar 
+#   rclcpp 
+#   std_msgs 
+#   sensor_msgs
+# )
 ament_target_dependencies(cfar_node 
   rclcpp 
   std_msgs 
@@ -65,10 +65,6 @@ ament_target_dependencies(cfar_node
 # Get the typesupport target
 rosidl_get_typesupport_target(cpp_typesupport_target
   ${PROJECT_NAME} "rosidl_typesupport_cpp")
-
-# Link the message interfaces
-# rosidl_target_interfaces(cfar_node
-#   ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 # Link libraries
 target_link_libraries(cfar

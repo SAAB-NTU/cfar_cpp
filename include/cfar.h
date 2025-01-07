@@ -4,8 +4,6 @@
 #include <sstream>
 #include <chrono>
 
-// #include <utilities.h>
-
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core.hpp>
@@ -24,6 +22,7 @@ class CFAR
         float threshold_factor_SOCA;
         float threshold_factor_GOCA;
     public:
+        CFAR();
         CFAR(int train_cells, int guard_cells, float false_alarm_rate);
         ~CFAR();
 

@@ -1,4 +1,3 @@
-std_msgs/Header header
 string mode
 int64 train_cells
 int64 guard_cells
