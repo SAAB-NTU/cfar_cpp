@@ -3,7 +3,7 @@
 <package format="3">
   <name>cfar_cpp</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Constant False Alarm Rate (CFAR) Detector Implementation for Forward-looking SONAR</description>
   <maintainer email="trgkn.nguyen@gmail.com">trgknng</maintainer>
   <license>TODO: License declaration</license>
 
@@ -26,5 +26,7 @@
   
   <export>
     <build_type>ament_cmake</build_type>
+
+     
   </export>
 </package>

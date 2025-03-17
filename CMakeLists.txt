@@ -46,7 +46,7 @@ target_include_directories(cfar_lib
 
 # Create executables
 add_executable(cfar src/main.cpp)
-add_executable(cfar_node src/cfar_node.cpp)
+add_executable(cfar_node src/cfar_node.cpp src/cfar.cpp)
 
 # Add dependencies
 # ament_target_dependencies(cfar 

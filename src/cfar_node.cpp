@@ -55,28 +55,29 @@ class CfarNode: public rclcpp::Node
         void topic_callback(const sensor_msgs::msg::Image::SharedPtr msg) {
             try {
                 cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::MONO8);
-                
+
                 if (cv_ptr->image.empty()) {
                     RCLCPP_ERROR(this->get_logger(), "Received empty image");
                     return;
                 }
+
+                // Apply CFAR filter
                 cv::Mat result = cfar_filter.soca(cv_ptr->image);
-                result.convertTo(result, CV_8U, 255.0); 
+        
+                cv::Mat result_uint8;
+                cv::normalize(result, result_uint8, 0, 255, cv::NORM_MINMAX, CV_8UC1);
 
                 cv_bridge::CvImage cv_image;
-                cv_image.image = result;
-                cv_image.encoding = "mono8"; 
+                cv_image.image = result_uint8;
+                cv_image.encoding = sensor_msgs::image_encodings::MONO8;
                 cv_image.header = msg->header;
-                auto msg = cv_image.toImageMsg();
-
-                sensor_msgs::msg::Image img_msg;
-                cv_image.toImageMsg(img_msg);
-                msg->step = result.cols;
-                cfar_publisher_->publish(*msg);
-            }
+                auto img_msg = cv_image.toImageMsg();
+                img_msg->step = result.step[0];
+                cfar_publisher_->publish(*img_msg);
+            } 
             catch (const cv_bridge::Exception& e) {
                 RCLCPP_ERROR(this->get_logger(), "cv_bridge exception: %s", e.what());
-            }
+            } 
             catch (const std::exception& e) {
                 RCLCPP_ERROR(this->get_logger(), "Exception: %s", e.what());
             }
