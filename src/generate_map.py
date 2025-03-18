@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import math
 import os
 import time
-from numba import jit, njit
-import cupy as cp
+#from numba import jit, njit
+#import cupy as cp
 
 from scipy.optimize import root
 from skimage.measure import block_reduce
@@ -73,13 +73,13 @@ class CFAR(object):
 if __name__ == "__main__":
     ntc = np.arange(2,41,2)
     ngc = np.arange(2,21,2)
-    pfa = np.arange(0.90,1,0.005)
+    pfa = np.arange(0.005,1,0.005)
     for train in ntc:
         for guard in ngc:
             for false_alarm_rate in pfa:
                 cfar = CFAR(train, guard, false_alarm_rate)
                 line = f"{train},{guard},{false_alarm_rate:.3f},{cfar.threshold_factor_SOCA},{cfar.threshold_factor_GOCA}\n"
                 # print(f"({train},{guard},{false_alarm_rate}): ({cfar.threshold_factor_SOCA},{cfar.threshold_factor_GOCA})")
-                with open("parameter_map.txt", "a") as f:
+                with open("parameter_map1.txt", "a") as f:
                     f.write(line)
                 del cfar

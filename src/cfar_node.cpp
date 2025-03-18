@@ -56,21 +56,27 @@ class CfarNode: public rclcpp::Node
             try {
                 cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::MONO8);
 
+
                 if (cv_ptr->image.empty()) {
                     RCLCPP_ERROR(this->get_logger(), "Received empty image");
                     return;
                 }
 
-                // Apply CFAR filter
-                cv::Mat result = cfar_filter.soca(cv_ptr->image);
+                if (result.empty()) { 
+                    result = cv::Mat::zeros(cv_ptr->image.rows, cv_ptr->image.cols, CV_32F);
+                }
+
+                cfar_filter.soca(cv_ptr->image, result);
         
+                // TODO: move uint8 conversion to inside cfar_filter
                 cv::Mat result_uint8;
                 cv::normalize(result, result_uint8, 0, 255, cv::NORM_MINMAX, CV_8UC1);
 
-                cv_bridge::CvImage cv_image;
-                cv_image.image = result_uint8;
-                cv_image.encoding = sensor_msgs::image_encodings::MONO8;
-                cv_image.header = msg->header;
+                cv_bridge::CvImage cv_image(
+                    msg->header,
+                    sensor_msgs::image_encodings::MONO8,
+                    result_uint8
+                );
                 auto img_msg = cv_image.toImageMsg();
                 img_msg->step = result.step[0];
                 cfar_publisher_->publish(*img_msg);
@@ -95,6 +101,7 @@ class CfarNode: public rclcpp::Node
         rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr cfar_publisher_;
 
         CFAR cfar_filter;
+        cv::Mat result;
 };
 
 int main(int argc, char** argv) {

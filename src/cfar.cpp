@@ -31,8 +31,8 @@ double CFAR::retrieve_params(int train_cells, int guard_cells, float false_alarm
     
     int train_num = (train_cells - 2)/2;
     int guard_num = (guard_cells - 2)/2;
-    int false_rate_num = (int)((false_alarm_rate - 0.90)/0.005);
-    int line = train_num*200 + guard_num*20 + false_rate_num + 1;
+    int false_rate_num = (int)((false_alarm_rate - 0.005)/0.005);
+    int line = train_num*1990 + guard_num*199 + false_rate_num + 1;
 
     // TODO: change path to dynamic
     std::fstream inputFile("parameter_map.txt");
@@ -55,7 +55,6 @@ double CFAR::retrieve_params(int train_cells, int guard_cells, float false_alarm
             for (int i = 0; i < 5; ++i) {
                 getline(ss, value, ',');
                 if (i == 3) {
-                    std::cout<<value;
                     return stod(value);
                 }
             }
@@ -63,82 +62,11 @@ double CFAR::retrieve_params(int train_cells, int guard_cells, float false_alarm
         }
     }
     
+    // return (double)line;
     return -1;
 }
 
-// cv::Mat CFAR::soca(cv::Mat& img)
-// {
-    
-//     // auto start = std::chrono::high_resolution_clock::now();
-    
-//     // There's a CUDA variation for this function
-//     cv::Mat img_gray;
-//     if (img.channels() == 3) {
-//         cv::cvtColor(img, img_gray,cv::COLOR_BGR2GRAY);
-//     } else {
-//         img_gray = img;
-//     }
-
-//     cv::Mat blurred_image;
-//     cv::GaussianBlur(img_gray, blurred_image, cv::Size(7,7), 0);
-
-//     cv::Mat denoised_image;
-//     // // There's a CUDA variation for this function
-//     cv::fastNlMeansDenoising(blurred_image, denoised_image, 200);
-
-//     cv::Mat integral_image;
-//     cv::integral(denoised_image, integral_image);
-
-//     cv::Mat trimmed_image = integral_image(cv::Rect(1,1,integral_image.cols-1, integral_image.rows-1));
-//     trimmed_image.convertTo(trimmed_image, CV_32F);
-
-//     int rows = trimmed_image.rows;
-//     int cols = trimmed_image.cols;
-//     cv::Mat result = cv::Mat::zeros(rows, cols, CV_8UC1);
-
-//     int total_train_cells = this->train_hs * (2 * this->train_hs + 2 * this->guard_hs + 1);
-    
-//     for (int col = (this->train_hs + this->guard_hs) + 1; col < (cols - this->train_hs - this->guard_hs); col++) {
-//         for (int row = (this->train_hs + this->guard_hs) + 1; row < (rows - this->train_hs - this->guard_hs); row++) {
-//             float leading_guard = calc_rect_sum(trimmed_image,
-//                                             row - this->guard_hs, col - this->guard_hs,
-//                                             this->guard_hs, 2*this->guard_hs+1);
-//             float leading_sum = calc_rect_sum(trimmed_image,
-//                                             row - this->guard_hs - this->train_hs, col - this->guard_hs - this->train_hs,
-//                                             this->guard_hs + this->train_hs,
-//                                             (2 * this->guard_hs + 2 * this->train_hs + 1));
-//             float leading_train = leading_sum - leading_guard;
-
-//             // Calculate lagging guard and lagging sum
-//             float lagging_guard = calc_rect_sum(trimmed_image,
-//                                             row - this->guard_hs, col + 1,
-//                                             this->guard_hs, 
-//                                             (2 * this->guard_hs + 1));
-//             float lagging_sum = calc_rect_sum(trimmed_image,
-//                                             row - this->guard_hs - this->train_hs, col + 1,
-//                                             this->guard_hs + this->train_hs,
-//                                             (2 * this->guard_hs + 2 * this->train_hs + 1));
-//             float lagging_train = lagging_sum - lagging_guard;
-
-//             // Calculate minimum of leading and lagging train sums
-//             float sum_train = std::min(leading_train, lagging_train);
-            
-//             // Assuming ret is a cv::Mat to store results
-            
-//             float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
-            
-//             result.at<int>(row, col) = (denoised_image.at<int>(row,col) > 0);
-//             // std::cout  << "Image Value: " << result.at<int>(row, col) << std::endl;
-//         }
-//     } 
-
-//     // auto end = std::chrono::high_resolution_clock::now();
-//     // std::chrono::duration<double> duration = end - start;
-//     // std::cout << "Execution time: " << duration.count() << " seconds." << std::endl;
-//     return result;
-// }
-
-cv::Mat CFAR::soca(cv::Mat& img)
+void CFAR::soca(cv::Mat& img, cv::Mat& des)
 {
     cv::Mat img_gray;
     if (img.channels() == 3) {
@@ -158,7 +86,7 @@ cv::Mat CFAR::soca(cv::Mat& img)
 
     int rows = trimmed_image.rows;
     int cols = trimmed_image.cols;
-    cv::Mat result = cv::Mat::zeros(rows, cols, CV_32F);  // Use float
+    // cv::Mat result = cv::Mat::zeros(rows, cols, CV_32F);  // Use float
 
     int total_train_cells = this->train_hs * (2 * this->train_hs + 2 * this->guard_hs + 1);
     
@@ -175,11 +103,9 @@ cv::Mat CFAR::soca(cv::Mat& img)
             float sum_train = std::min(leading_train, lagging_train);
             float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
 
-            result.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num*2) ? num : 0.0f;
+            des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num*2) ? img_gray.at<uchar>(row, col) : 0.0f;
         }
     }
-
-    return result;
 }
 
 float CFAR::calc_rect_sum(cv::Mat& img, int x, int y, int w, int h) {

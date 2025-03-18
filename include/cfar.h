@@ -27,7 +27,7 @@ class CFAR
         ~CFAR();
 
         double retrieve_params(int train_cells, int guard_cells, float false_alarm_rate);
-        cv::Mat soca(cv::Mat& img);
+        void soca(cv::Mat& img, cv::Mat& des);
         float calc_rect_sum(cv::Mat& img, int x, int y, int w, int h);
         int get_train_cells();
         int get_guard_cells();
