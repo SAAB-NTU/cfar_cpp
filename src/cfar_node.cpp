@@ -6,6 +6,8 @@
 
 #include <cv_bridge/cv_bridge.h>
 
+#include<chrono>
+
 class CfarNode: public rclcpp::Node
 {
     public:
@@ -37,6 +39,9 @@ class CfarNode: public rclcpp::Node
             );
             
             this->publish_cfar_info();
+
+            elapse_total = 0;
+            elapse_count = 0;
         }
     
     private:
@@ -55,18 +60,34 @@ class CfarNode: public rclcpp::Node
         void topic_callback(const sensor_msgs::msg::Image::SharedPtr msg) {
             try {
                 cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::MONO8);
-
-
                 if (cv_ptr->image.empty()) {
                     RCLCPP_ERROR(this->get_logger(), "Received empty image");
                     return;
                 }
-
                 if (result.empty()) { 
                     result = cv::Mat::zeros(cv_ptr->image.rows, cv_ptr->image.cols, CV_32F);
                 }
+                auto start = std::chrono::high_resolution_clock::now();
+                // cfar_filter.soca(cv_ptr->image, result);
+                // cfar_filter.soca_1d(cv_ptr->image, result);
+                cfar_filter.soca_1d_integral(cv_ptr->image, result);
+                auto end = std::chrono::high_resolution_clock::now();
+                std::chrono::duration<double, std::milli> elapsed = end - start; // Time in milliseconds
+                // RCLCPP_INFO(this->get_logger(), "Execution time: %.3f ms", elapsed.count());
 
-                cfar_filter.soca(cv_ptr->image, result);
+                if (elapse_count < 100)
+                {
+                    elapse_total += elapsed.count();
+                    elapse_count ++;
+                }
+                else if (elapse_count == 100)
+                {
+                    double average = elapse_total/elapse_count;
+                    elapse_count = 0;
+                    elapse_total = 0;
+                    RCLCPP_INFO(this->get_logger(), "Average execution time: %.3f ms", average);
+                }
+
         
                 // TODO: move uint8 conversion to inside cfar_filter
                 cv::Mat result_uint8;
@@ -102,6 +123,8 @@ class CfarNode: public rclcpp::Node
 
         CFAR cfar_filter;
         cv::Mat result;
+        double elapse_total;
+        int elapse_count;
 };
 
 int main(int argc, char** argv) {

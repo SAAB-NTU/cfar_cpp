@@ -20,6 +20,7 @@ CFAR::CFAR(int train_cells, int guard_cells, float false_alarm_rate)
         this->train_cells, this->guard_cells, this->false_alarm_rate);
 
     this->rank = this->train_cells/2;
+    this->total_train_cells = this->train_hs * (2 * this->train_hs + 2 * this->guard_hs + 1);
 }
 
 CFAR::~CFAR()
@@ -62,11 +63,54 @@ double CFAR::retrieve_params(int train_cells, int guard_cells, float false_alarm
         }
     }
     
-    // return (double)line;
     return -1;
 }
 
-void CFAR::soca(cv::Mat& img, cv::Mat& des)
+int CFAR::get_train_cells() {
+    return this->train_cells;
+}
+
+int CFAR::get_guard_cells() {
+    return this->guard_cells;
+}
+
+float CFAR::get_false_alarm_rate() {
+    return this->false_alarm_rate;
+}
+
+float CFAR::get_threshold_factor_soca() {
+    return this->threshold_factor_SOCA;
+}
+
+// TODO: For all SOCA-CFAR implementations, the cells being trained depend on the number of training cells
+// The edge cells are discarded. Make the new implementation also include those edge cells
+void CFAR::soca_2d(cv::Mat& img, cv::Mat& des)
+{
+    cv::Mat img_gray;
+    if (img.channels() == 3) {
+        cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
+    } else {
+        img_gray = img.clone();
+    }
+
+    // for (int row = (this->train_hs + this->guard_hs) + 1; row < (rows - this->train_hs - this->guard_hs); row++) {
+    //     for (int col = (this->train_hs + this->guard_hs) + 1; col < (cols - this->train_hs - this->guard_hs); col++) {
+    //         float leading_sum = 0.0, lagging_sum = 0.0;
+    //         for (int c_row = row - this->train_hs - this->guard_hs; c_row < row + this->train_hs + this->guard_hs; c_row++) {
+    //             for (int c_col = col - this-this->train_hs - this->guard_hs; c_col < col + this->train_hs + this->guard_hs, c_col++) {
+
+    //             }
+    //         }
+
+            // float sum_train = std::min(leading_train, lagging_train);
+            // float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
+
+            // des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
+    //     }
+    // }
+}
+
+void CFAR::soca_2d_integral(cv::Mat& img, cv::Mat& des)
 {
     cv::Mat img_gray;
     if (img.channels() == 3) {
@@ -77,21 +121,13 @@ void CFAR::soca(cv::Mat& img, cv::Mat& des)
 
     cv::Mat integral_image;
     cv::integral(img_gray, integral_image, CV_32F);
-
-    int w = std::max(1, integral_image.cols - 1);
-    int h = std::max(1, integral_image.rows - 1);
-    cv::Mat trimmed_image = integral_image(cv::Rect(1, 1, w, h));
-
-    trimmed_image.convertTo(trimmed_image, CV_32F);
+    cv::Mat trimmed_image = integral_image(cv::Rect(1, 1, integral_image.cols - 1, integral_image.rows - 1));
 
     int rows = trimmed_image.rows;
     int cols = trimmed_image.cols;
-    // cv::Mat result = cv::Mat::zeros(rows, cols, CV_32F);  // Use float
 
-    int total_train_cells = this->train_hs * (2 * this->train_hs + 2 * this->guard_hs + 1);
-    
-    for (int col = (this->train_hs + this->guard_hs) + 1; col < (cols - this->train_hs - this->guard_hs); col++) {
-        for (int row = (this->train_hs + this->guard_hs) + 1; row < (rows - this->train_hs - this->guard_hs); row++) {
+    for (int row = (this->train_hs + this->guard_hs) + 1; row < (rows - this->train_hs - this->guard_hs); row++) {
+        for (int col = (this->train_hs + this->guard_hs) + 1; col < (cols - this->train_hs - this->guard_hs); col++) {
             float leading_guard = calc_rect_sum(trimmed_image, row - this->guard_hs, col - this->guard_hs, this->guard_hs, 2*this->guard_hs+1);
             float leading_sum = calc_rect_sum(trimmed_image, row - this->guard_hs - this->train_hs, col - this->guard_hs - this->train_hs, this->guard_hs + this->train_hs, (2 * this->guard_hs + 2 * this->train_hs + 1));
             float leading_train = leading_sum - leading_guard;
@@ -103,7 +139,62 @@ void CFAR::soca(cv::Mat& img, cv::Mat& des)
             float sum_train = std::min(leading_train, lagging_train);
             float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
 
-            des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num*2) ? img_gray.at<uchar>(row, col) : 0.0f;
+            des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
+        }
+    }
+}
+
+void CFAR::soca_1d(cv::Mat& img, cv::Mat& des) {
+    // Similar implementation to bruce-slam
+    cv::Mat img_gray;
+    if (img.channels() == 3) {
+        cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
+    } else {
+        img_gray = img.clone();
+    }
+
+    int rows = img_gray.rows;
+    int cols = img_gray.cols;
+
+    for (int row = this->train_hs + this->guard_hs; row < rows - this->train_hs - this->guard_hs; ++row)
+    {
+        for (int col = 0; col < cols; ++col)
+        {
+            float leading_sum = 0.0, lagging_sum = 0.0;
+            for (int i = row - this->train_hs - this->guard_hs; i < row + this->train_hs + this->guard_hs + 1; ++i)
+            {
+                if ((i - row) > this->guard_hs)
+                lagging_sum += img_gray.at<uchar>(i, col);
+                else if ((i - row) < -this->guard_hs)
+                leading_sum += img_gray.at<uchar>(i, col);
+            }
+            float sum_train = std::min(leading_sum, lagging_sum);
+            float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
+            des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
+        }
+    }
+}
+
+void CFAR::soca_1d_integral(cv::Mat& img, cv::Mat& des) {
+    cv::Mat img_gray;
+    if (img.channels() == 3) {
+        cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
+    } else {
+        img_gray = img;
+    }
+
+    int rows = img_gray.rows;
+    int cols = img_gray.cols;
+
+    for (int row = this->train_hs + this->guard_hs; row < rows - this->train_hs - this->guard_hs; ++row)
+    {
+        for (int col = 0; col < cols; ++col)
+        {
+            float leading_sum = calc_rect_sum(img_gray, row - this->guard_hs - this->train_hs, col, 0, this->train_hs);
+            float lagging_sum = calc_rect_sum(img_gray, row + this->guard_hs, col, 0, this->train_hs);
+            float sum_train = std::min(leading_sum, lagging_sum);
+            float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
+            des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
         }
     }
 }
@@ -123,18 +214,3 @@ float CFAR::calc_rect_sum(cv::Mat& img, int x, int y, int w, int h) {
     return sum;
 }
 
-int CFAR::get_train_cells() {
-    return this->train_cells;
-}
-
-int CFAR::get_guard_cells() {
-    return this->guard_cells;
-}
-
-float CFAR::get_false_alarm_rate() {
-    return this->false_alarm_rate;
-}
-
-float CFAR::get_threshold_factor_soca() {
-    return this->threshold_factor_SOCA;
-}

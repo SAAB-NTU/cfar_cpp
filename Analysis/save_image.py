@@ -6,13 +6,14 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 import os
 import rosidl_runtime_py.utilities as msg_utils
+import matplotlib.pyplot as plt
 
 def extract_images_from_bag(bag_path, image_topic, output_dir="extracted_images"):
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
     # Initialize ROS and CvBridge
-    rclpy.init()
+    # rclpy.init()
     reader = rosbag2_py.SequentialReader()
     
     # Open the ROS 2 bag file
@@ -35,19 +36,36 @@ def extract_images_from_bag(bag_path, image_topic, output_dir="extracted_images"
             try:
                 image_msg = rclpy.serialization.deserialize_message(data, Image)
                 cv_image = bridge.imgmsg_to_cv2(image_msg)
+                cv_image_flip =cv2.flip(cv_image, -1)
+                
                 filename = os.path.join(output_dir, f'image_{counter:04d}.png')
-                cv2.imwrite(filename, cv_image)
+                cv2.imwrite(filename, cv_image_flip)
                 print(f"Saved {filename}")
                 counter += 1
+                
+                # return cv_image
             except Exception as e:
                 print(f"Failed to process image: {e}")
 
     print(f"Extracted {counter} images to {output_dir}")
-    rclpy.shutdown()
+    # rclpy.shutdown()
 
 if __name__ == "__main__":
-    bag_path = "fls_bag/20241210110455/20241210110455.db3"  # Change this to your ROS bag file path
-    image_topic = "/oculus_sonar/ping_image"
-    output_dirs = "fls_data"      # Change this to your image topic
+    bag_path = "/media/saab/f7ee81f1-4052-4c44-b470-0a4a650ee479/cfar_cpp/Analysis/fls_boat/fls_boat_0.db3"  # Change this to your ROS bag file path
+    image_topic = "/sonar/image"
+    output_dirs = "fls_sim_boat"      # Change this to your image topic
 
-    extract_images_from_bag(bag_path, image_topic, output_dirs)
+    cv_image = extract_images_from_bag(bag_path, image_topic, output_dirs)
+    # cv_image_flip_0 = cv2.flip(cv_image,0)
+    # cv_image_flip_1 = cv2.flip(cv_image,1)
+    # cv_image_flip_2 = cv2.flip(cv_image,-1)
+
+    # fig, axes = plt.subplots(1, 4, figsize=(15, 5))
+    # titles = ["Original", "Flipped Vertical", "Flipped Horizontal", "Flipped Both"]
+    # images = [cv_image, cv_image_flip_0, cv_image_flip_1, cv_image_flip_2]
+    # for ax, img, title in zip(axes, images, titles):
+    #     ax.imshow(img)
+    #     ax.set_title(title)
+    #     ax.axis("off")  # Hide axes
+    # plt.tight_layout()
+    # plt.show()

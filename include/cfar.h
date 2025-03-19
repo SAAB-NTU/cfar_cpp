@@ -21,16 +21,22 @@ class CFAR
 
         float threshold_factor_SOCA;
         float threshold_factor_GOCA;
+
+        int total_train_cells;
     public:
         CFAR();
         CFAR(int train_cells, int guard_cells, float false_alarm_rate);
         ~CFAR();
 
         double retrieve_params(int train_cells, int guard_cells, float false_alarm_rate);
-        void soca(cv::Mat& img, cv::Mat& des);
-        float calc_rect_sum(cv::Mat& img, int x, int y, int w, int h);
         int get_train_cells();
         int get_guard_cells();
         float get_false_alarm_rate();
         float get_threshold_factor_soca();
+
+        void soca_1d(cv::Mat& img, cv::Mat& des);
+        void soca_2d(cv::Mat& img, cv::Mat& des);
+        void soca_1d_integral(cv::Mat& img, cv::Mat& des);
+        void soca_2d_integral(cv::Mat& img, cv::Mat& des);
+        float calc_rect_sum(cv::Mat& img, int x, int y, int w, int h);
 };
