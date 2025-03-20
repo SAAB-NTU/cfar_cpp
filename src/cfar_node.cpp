@@ -68,9 +68,10 @@ class CfarNode: public rclcpp::Node
                     result = cv::Mat::zeros(cv_ptr->image.rows, cv_ptr->image.cols, CV_32F);
                 }
                 auto start = std::chrono::high_resolution_clock::now();
-                // cfar_filter.soca(cv_ptr->image, result);
+                // cfar_filter.soca_2d(cv_ptr->image, result);
+                cfar_filter.soca_2d_integral(cv_ptr->image, result);
                 // cfar_filter.soca_1d(cv_ptr->image, result);
-                cfar_filter.soca_1d_integral(cv_ptr->image, result);
+                // cfar_filter.soca_1d_integral(cv_ptr->image, result);
                 auto end = std::chrono::high_resolution_clock::now();
                 std::chrono::duration<double, std::milli> elapsed = end - start; // Time in milliseconds
                 // RCLCPP_INFO(this->get_logger(), "Execution time: %.3f ms", elapsed.count());

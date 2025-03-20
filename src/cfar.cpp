@@ -93,21 +93,32 @@ void CFAR::soca_2d(cv::Mat& img, cv::Mat& des)
         img_gray = img.clone();
     }
 
-    // for (int row = (this->train_hs + this->guard_hs) + 1; row < (rows - this->train_hs - this->guard_hs); row++) {
-    //     for (int col = (this->train_hs + this->guard_hs) + 1; col < (cols - this->train_hs - this->guard_hs); col++) {
-    //         float leading_sum = 0.0, lagging_sum = 0.0;
-    //         for (int c_row = row - this->train_hs - this->guard_hs; c_row < row + this->train_hs + this->guard_hs; c_row++) {
-    //             for (int c_col = col - this-this->train_hs - this->guard_hs; c_col < col + this->train_hs + this->guard_hs, c_col++) {
+    int rows = img_gray.rows;
+    int cols = img_gray.cols;
 
-    //             }
-    //         }
+    for (int row = (this->train_hs + this->guard_hs) + 1; row < (rows - this->train_hs - this->guard_hs); row++) {
+        for (int col = (this->train_hs + this->guard_hs) + 1; col < (cols - this->train_hs - this->guard_hs); col++) {
+            float leading_sum = 0.0, lagging_sum = 0.0;
+            for (int i = row - this->train_hs - this->guard_hs; i <= row + this->train_hs + this->guard_hs; ++i) {
+                for (int j = col - this->train_hs - this->guard_hs; j <= col + this->train_hs + this->guard_hs; ++j) {
+                    if (std::abs(i - row) <= this->guard_hs && std::abs(j - col) <= this->guard_hs) {
+                        continue;
+                    }
+                    if ((i < row && j < col) || (i < row && j == col) || (i == row && j < col)) {
+                        leading_sum += img_gray.at<uchar>(i, j);
+                    }
+                    else {
+                        lagging_sum += img_gray.at<uchar>(i, j);
+                    }
+                }
+            }
 
-            // float sum_train = std::min(leading_train, lagging_train);
-            // float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
+            float sum_train = std::min(leading_sum, lagging_sum);
+            float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
 
-            // des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
-    //     }
-    // }
+            des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
+        }
+    }
 }
 
 void CFAR::soca_2d_integral(cv::Mat& img, cv::Mat& des)
