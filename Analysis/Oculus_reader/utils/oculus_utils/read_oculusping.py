@@ -107,17 +107,25 @@ class OculusFLSPing:
             self.flag_info['return_type'] = 'full'
         #print(usr_flags, self.flag_info)
 
-    def cvt_acousticImg_byte2pixels(self, verbose=False):
+    def cvt_acousticImg_byte2pixels(self, verbose=True):
         dtype_size = self.flag_info['dtype_size']
         acousticImg_datatype = self.dtype_dict[self.flag_info['dtype_size']]
         max_M = self.pingConfig['M']
         max_N = self.pingConfig['N']
-        max_pixels = max_M * max_N * dtype_size
+        max_pixels = max_M * max_N // dtype_size
         #print(max_pixels)
         
         if len(self.acousticImg_raw) > 0:
             print(len(self.acousticImg_raw), max_pixels, acousticImg_datatype, int.from_bytes(self.usr_flags, byteorder='little', signed=False))
+            print(self.usr_flags)
+       
             pixel_data = np.frombuffer(self.acousticImg_raw, dtype=acousticImg_datatype, count=int(max_pixels) )
+            print(pixel_data.shape)
+            #if(acousticImg_datatype!=np.uint8):
+            if acousticImg_datatype != np.uint8:
+            	pixel_data = pixel_data.view(np.uint8)  # Reinterpret bytes as uint8
+
+            	
             if verbose:
                 print("raw bytes for acoustic image:")
                 print(self.acousticImg_raw, pixel_data, len(pixel_data))
@@ -220,7 +228,9 @@ class OculusFLSPing:
         if len(img_bytes) <= max_byte_size:
             try:
                 self.acousticImg_raw = img_bytes
-                self.cvt_acousticImg_byte2pixels(verbose=verbose)
+                #print(img_bytes)
+                self.cvt_acousticImg_byte2pixels()
+                
                 self.create_acousticImg_matrix(verbose=verbose)
             except Exception as exc:
                 print("Cannot create acoustic Image from data. Ensure image data and offset are correctly marked in payload!", len(img_bytes))
