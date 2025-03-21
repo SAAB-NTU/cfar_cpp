@@ -3,4 +3,4 @@ cfar_node:
     mode: 'soca'
     train_cells: 40
     guard_cells: 6
-    false_alarm_rate: 0.235
+    false_alarm_rate: 0.33

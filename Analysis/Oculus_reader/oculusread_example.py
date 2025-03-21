@@ -4,8 +4,8 @@ from utils.nb_viewing_tools import pyplot_fig
 from utils.watercol_to_cartesian_transforms import omsf_watercol_to_cartesian, scipy_skimage_watercol_to_cartesian
 import matplotlib.pyplot as plt
 
-example_file = "./20250219_200440_legacy.oculus"
-folder="./20250219_200440/"
+example_file = "./20250219_201133_legacy.oculus"
+folder="./20250219_201133/"
 ping_gen = OculusPing_generator(example_file, verbose=False)
 ping_samples = [ping for ping in ping_gen]
 
