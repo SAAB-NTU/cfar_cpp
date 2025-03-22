@@ -15,6 +15,7 @@ CFAR::CFAR(int train_cells, int guard_cells, float false_alarm_rate)
 
     this->train_hs = this->train_cells/2;
     this->guard_hs = this->guard_cells/2;
+    this->total_hs = this->train_hs + this->guard_hs;
     
     this->threshold_factor_SOCA = CFAR::retrieve_params(
         this->train_cells, this->guard_cells, this->false_alarm_rate);
@@ -82,8 +83,6 @@ float CFAR::get_threshold_factor_soca() {
     return this->threshold_factor_SOCA;
 }
 
-// TODO: For all SOCA-CFAR implementations, the cells being trained depend on the number of training cells
-// The edge cells are discarded. Make the new implementation also include those edge cells
 void CFAR::soca_2d(cv::Mat& img, cv::Mat& des)
 {
     cv::Mat img_gray;
@@ -137,18 +136,45 @@ void CFAR::soca_2d_integral(cv::Mat& img, cv::Mat& des)
     int rows = trimmed_image.rows;
     int cols = trimmed_image.cols;
 
-    for (int row = (this->train_hs + this->guard_hs) + 1; row < (rows - this->train_hs - this->guard_hs); row++) {
-        for (int col = (this->train_hs + this->guard_hs) + 1; col < (cols - this->train_hs - this->guard_hs); col++) {
+    for (int row = 0; row < rows; row++) {
+        for (int col = 0; col < cols; col++) {
+            int available_rows = 2 * this->train_hs;
+            int available_leading_cols = this->train_hs;
+            int available_lagging_cols = this->train_hs;
+
+            if (row - this->guard_hs < 0 || row + this->guard_hs >= rows) {
+                available_rows = this->train_hs;
+            } else if (row - this->total_hs < 0) {
+                available_rows = 2 * this->train_hs + (row - this->total_hs);
+            } else if (row + this->guard_hs + this->train_hs >= rows) {
+                available_rows = 2 * this->train_hs - (row + this->total_hs - (rows - 1));
+            }
+
+            if (col - this->guard_hs < 0) {
+                available_leading_cols = 0;
+            } else if (col - this->total_hs < 0) {
+                available_leading_cols = this->train_hs + (col - this->total_hs);
+            }
+
+            if (col + this->guard_hs >= cols) {
+                available_lagging_cols = 0;
+            } else if (col + this->total_hs >= cols) {
+                available_lagging_cols = this->train_hs - (col + this->total_hs - (cols - 1));
+            }
+
+            int total_leading_cells = 2*available_rows*available_leading_cols;
+            int total_lagging_cells = 2*available_rows*available_lagging_cols;
+
             float leading_guard = calc_rect_sum(trimmed_image, row - this->guard_hs, col - this->guard_hs, this->guard_hs, 2*this->guard_hs+1);
-            float leading_sum = calc_rect_sum(trimmed_image, row - this->guard_hs - this->train_hs, col - this->guard_hs - this->train_hs, this->guard_hs + this->train_hs, (2 * this->guard_hs + 2 * this->train_hs + 1));
-            float leading_train = leading_sum - leading_guard;
+            float leading_sum = calc_rect_sum(trimmed_image, row - this->total_hs, col - this->total_hs, this->total_hs, (2*this->total_hs + 1));
+            float leading_train = (total_leading_cells > 0)?(leading_sum - leading_guard)/total_leading_cells:0.0f;
 
             float lagging_guard = calc_rect_sum(trimmed_image, row - this->guard_hs, col + 1, this->guard_hs, (2 * this->guard_hs + 1));
-            float lagging_sum = calc_rect_sum(trimmed_image, row - this->guard_hs - this->train_hs, col + 1, this->guard_hs + this->train_hs, (2 * this->guard_hs + 2 * this->train_hs + 1));
-            float lagging_train = lagging_sum - lagging_guard;
+            float lagging_sum = calc_rect_sum(trimmed_image, row - this->total_hs, col + 1, this->total_hs, (2 * this->total_hs + 1));
+            float lagging_train = (total_lagging_cells > 0)?(lagging_sum - lagging_guard)/total_lagging_cells:0.0f;
 
-            float sum_train = std::min(leading_train, lagging_train);
-            float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
+            // float sum_train = std::min(leading_train, lagging_train);
+            float num = (this->threshold_factor_SOCA * std::min(leading_train, lagging_train));
 
             des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
         }
@@ -210,17 +236,31 @@ void CFAR::soca_1d_integral(cv::Mat& img, cv::Mat& des) {
     }
 }
 
-float CFAR::calc_rect_sum(cv::Mat& img, int x, int y, int w, int h) {
-    // TODO: make integral image consider edge cases within the training cells
-    if (x < 0 || y < 0 || x + h - 1 >= img.rows || y + w - 1 >= img.cols) {
-        throw std::out_of_range("Coordinates are out of bounds");
-    }
+// float CFAR::calc_rect_sum(cv::Mat& img, int x, int y, int w, int h) {
+//     // TODO: make integral image consider edge cases within the training cells
+//     if (x < 0 || y < 0 || x + h - 1 >= img.rows || y + w - 1 >= img.cols) {
+//         throw std::out_of_range("Coordinates are out of bounds");
+//     }
 
-    // Calculate the sum of the rectangular block in the integral image
-    float sum = img.at<float>(x + h - 1, y + w - 1)
-              - (x > 0 ? img.at<float>(x - 1, y + w - 1) : 0)
-              - (y > 0 ? img.at<float>(x + h - 1, y - 1) : 0)
-              + (x > 0 && y > 0 ? img.at<float>(x - 1, y - 1) : 0);
+//     // Calculate the sum of the rectangular block in the integral image
+//     float sum = img.at<float>(x + h - 1, y + w - 1)
+//               - (x > 0 ? img.at<float>(x - 1, y + w - 1) : 0)
+//               - (y > 0 ? img.at<float>(x + h - 1, y - 1) : 0)
+//               + (x > 0 && y > 0 ? img.at<float>(x - 1, y - 1) : 0);
+
+//     return sum;
+// }
+
+float CFAR::calc_rect_sum(cv::Mat& img, int x, int y, int w, int h) {
+    int x1 = std::max(0, x);
+    int y1 = std::max(0, y);
+    int x2 = std::min(img.rows - 1, x + h - 1);
+    int y2 = std::min(img.cols - 1, y + w - 1);
+
+    float sum = img.at<float>(x2, y2)
+              - (x1 > 0 ? img.at<float>(x1 - 1, y2) : 0)
+              - (y1 > 0 ? img.at<float>(x2, y1 - 1) : 0)
+              + (x1 > 0 && y1 > 0 ? img.at<float>(x1 - 1, y1 - 1) : 0);
 
     return sum;
 }

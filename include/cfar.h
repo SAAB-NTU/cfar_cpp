@@ -16,6 +16,7 @@ class CFAR
         int guard_cells; // Number of guard cells
         int train_hs;
         int guard_hs;
+        int total_hs;
         float false_alarm_rate; // False alarm rate
         int rank;
 
