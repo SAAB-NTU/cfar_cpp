@@ -6,34 +6,31 @@
 
 int main()
 {
-    // std::string path = "/home/trgknng/ros2_ws/src/pingviewer_ros/pingviewer_ros/data";
-    // std::string image_name = "image_010.png";
+    std::string path = "/media/saab/f7ee81f1-4052-4c44-b470-0a4a650ee479/cfar_cpp/Analysis/Oculus_reader/20250212_181120/polar/";
+    std::string image_name = "1739355080.836.png";
     
-    // std::filesystem::path image_path = std::filesystem::path(path) / image_name;
+    std::filesystem::path image_path = std::filesystem::path(path) / image_name;
 
-    // // Read the image using OpenCV
-    // cv::Mat image = cv::imread(image_path.string());
-    // cv::imshow("original image", image);
+    // Read the image using OpenCV
+    cv::Mat image = cv::imread(image_path.string());
 
-    // // Check if the image was loaded successfully
-    // if (image.empty()) {
-    //     std::cerr << "Error importing image" << std::endl;
-    //     return EXIT_FAILURE; // Exit with failure code
-    // }
+    // Check if the image was loaded successfully
+    if (image.empty()) {
+        std::cerr << "Error importing image" << std::endl;
+        return EXIT_FAILURE; // Exit with failure code
+    }
 
-    // CFAR cfar(12,4,0.97);
-    // cv::Mat result = cfar.soca(image);
-    // cv::Mat final_result;
+    CFAR cfar(40,10,0.160);
+    cv::Mat result_1d = cv::Mat::zeros(image.size(), CV_32F);
+    cv::Mat result_2d = cv::Mat::zeros(image.size(), CV_32F);
+    cfar.soca_1d(image, result_1d);
+    cfar.soca_2d_integral(image, result_2d);
+    cv::normalize(result_1d, result_1d, 0, 255, cv::NORM_MINMAX, CV_8UC1);
+    cv::normalize(result_2d, result_2d, 0, 255, cv::NORM_MINMAX, CV_8UC1);
 
-    // // cv::normalize(result, result, 0, 255, cv::NORM_MINMAX, CV_8U);
-    // // std::cout << final_result << std::endl;
-    // // If you need integer values
-    // result.convertTo(final_result, CV_8U, 255.0);  // Convert to 8-bit unsigned integer
+    cv::imwrite("original.png", image);
+    cv::imwrite("cfar1d.png", result_1d);
+    cv::imwrite("cfar2d.png", result_2d);
 
-    // std::cout << "image dimensions: " << final_result.rows << " " << final_result.cols << std::endl;
-
-    // cv::imshow("Image", final_result);
-    // cv::waitKey(0); // Wait for a key press
-
-    // return EXIT_SUCCESS; // Exit successfully
+    return EXIT_SUCCESS; // Exit successfully
 }

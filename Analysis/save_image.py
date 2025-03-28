@@ -7,8 +7,9 @@ from sensor_msgs.msg import Image
 import os
 import rosidl_runtime_py.utilities as msg_utils
 import matplotlib.pyplot as plt
+import numpy as np
 
-def extract_images_from_bag(bag_path, image_topic, output_dir="extracted_images"):
+def extract_images_from_bag(bag_path, image_topic1, image_topic2, output_dir="extracted_images"):
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
@@ -32,30 +33,52 @@ def extract_images_from_bag(bag_path, image_topic, output_dir="extracted_images"
     while reader.has_next():
         (topic, data, timestamp) = reader.read_next()
         
-        if topic == image_topic:
+        if topic == image_topic1:
             try:
                 image_msg = rclpy.serialization.deserialize_message(data, Image)
-                cv_image = bridge.imgmsg_to_cv2(image_msg)
-                cv_image_flip =cv2.flip(cv_image, -1)
+                # print(type(image_msg.data))
+                np_image = np.frombuffer(image_msg.data, dtype=np.uint8)
+                np_image = np_image.reshape((image_msg.height, image_msg.width, -1))  # Reshape based on dimensions
+                # cv_image = bridge.imgmsg_to_cv2(image_msg)
+                # cv_image_flip =cv2.flip(cv_image, -1)
                 
-                filename = os.path.join(output_dir, f'image_{counter:04d}.png')
-                cv2.imwrite(filename, cv_image_flip)
+                filename = os.path.join(output_dir, f'image_{counter:04d}_1.png')
+                cv2.imwrite(filename, np_image)
                 print(f"Saved {filename}")
-                counter += 1
+                # counter += 1
                 
                 # return cv_image
             except Exception as e:
                 print(f"Failed to process image: {e}")
+        elif topic == image_topic2:
+            try:
+                image_msg = rclpy.serialization.deserialize_message(data, Image)
+                # print(type(image_msg.data))
+                np_image = np.frombuffer(image_msg.data, dtype=np.uint8)
+                np_image = np_image.reshape((image_msg.height, image_msg.width, -1))  # Reshape based on dimensions
+                # cv_image = bridge.imgmsg_to_cv2(image_msg)
+                # cv_image_flip =cv2.flip(cv_image, -1)
+                
+                filename = os.path.join(output_dir, f'image_{counter:04d}_0.png')
+                cv2.imwrite(filename, np_image)
+                print(f"Saved {filename}")
+                # counter += 1
+                
+                # return cv_image
+            except Exception as e:
+                print(f"Failed to process image: {e}")
+            counter += 1
 
     print(f"Extracted {counter} images to {output_dir}")
     # rclpy.shutdown()
 
 if __name__ == "__main__":
-    bag_path = "/media/saab/f7ee81f1-4052-4c44-b470-0a4a650ee479/cfar_cpp/Analysis/fls_boat/fls_boat_0.db3"  # Change this to your ROS bag file path
-    image_topic = "/sonar/image"
-    output_dirs = "fls_sim_boat"      # Change this to your image topic
+    bag_path = "/media/saab/f7ee81f1-4052-4c44-b470-0a4a650ee479/cfar_cpp/Analysis/2d_localization_output/2d_localization_output_0.db3" 
+    image_topic1 = "/cfar/image"
+    image_topic2 = "/oculus_sonar/ping_image"
+    output_dirs = "2d_localization_img"      # Change this to your image topic
 
-    cv_image = extract_images_from_bag(bag_path, image_topic, output_dirs)
+    cv_image = extract_images_from_bag(bag_path, image_topic1, image_topic2, output_dirs)
     # cv_image_flip_0 = cv2.flip(cv_image,0)
     # cv_image_flip_1 = cv2.flip(cv_image,1)
     # cv_image_flip_2 = cv2.flip(cv_image,-1)
