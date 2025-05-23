@@ -20,7 +20,8 @@ int main()
         return EXIT_FAILURE; // Exit with failure code
     }
 
-    CFAR cfar(40,10,0.160);
+    CFAR cfar(20,10,0.001);
+    std::cout << "SOCA threshold factor: " << cfar.get_threshold_factor_soca() << "\n";
     cv::Mat result_1d = cv::Mat::zeros(image.size(), CV_32F);
     cv::Mat result_2d = cv::Mat::zeros(image.size(), CV_32F);
     cfar.soca_1d(image, result_1d);

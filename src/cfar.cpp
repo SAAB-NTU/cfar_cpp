@@ -17,8 +17,9 @@ CFAR::CFAR(int train_cells, int guard_cells, float false_alarm_rate)
     this->guard_hs = this->guard_cells/2;
     this->total_hs = this->train_hs + this->guard_hs;
     
-    this->threshold_factor_SOCA = CFAR::retrieve_params(
-        this->train_cells, this->guard_cells, this->false_alarm_rate);
+    // this->threshold_factor_SOCA = CFAR::retrieve_params(
+    //     this->train_cells, this->guard_cells, this->false_alarm_rate);
+    this->threshold_factor_SOCA = CFAR::calc_multiplier();
 
     this->rank = this->train_cells/2;
     this->total_train_cells = this->train_hs * (2 * this->train_hs + 2 * this->guard_hs + 1);
@@ -28,9 +29,36 @@ CFAR::~CFAR()
 {
 }
 
+double CFAR::calc_multiplier()
+{
+    arma::vec coeffs(this->train_cells, arma::fill::zeros);
+    coeffs.front() = -this->false_alarm_rate/2;
+    for (int i=0; i <= (this->train_cells/2 - 1); i++)
+    {
+        int index = this->train_cells/2 + i;
+        double coeff = boost::math::binomial_coefficient<double>(this->train_cells/2 - 1 + i,i);
+        coeffs(index) = coeff;
+    }
+    
+    arma::cx_vec roots = arma::roots(arma::reverse(coeffs));
+
+    double x = -1;
+    std::for_each(roots.begin(), roots.end(), [&x](arma::cx_double root){
+        if ((root.imag() == 0) && (root.real() > 0.0) && (root.real() < 0.5))
+        {
+            if (root.real() > x) x = root.real();
+        }
+    });
+    if (x == -1)
+    {
+        // std::cerr << "Real root not found\n";
+        return -1; 
+    }
+    return (1/x - 2) * this->train_cells/2;
+}
+
 double CFAR::retrieve_params(int train_cells, int guard_cells, float false_alarm_rate)
 {
-    
     int train_num = (train_cells - 2)/2;
     int guard_num = (guard_cells - 2)/2;
     int false_rate_num = (int)((false_alarm_rate - 0.005)/0.005);

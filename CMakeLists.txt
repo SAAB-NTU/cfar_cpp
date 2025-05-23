@@ -24,6 +24,9 @@ find_package(std_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(image_transport REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(Armadillo REQUIRED)
+find_package(Eigen3 CONFIG REQUIRED)
+
 
 # Generate interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -34,15 +37,20 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 # Include directories
 include_directories(include)
 include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(${ARMADILLO_INCLUDE_DIRS})
 
 # Create the library
 add_library(cfar_lib src/cfar.cpp)
 target_include_directories(cfar_lib
-  PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include # For headers exposed by cfar_lib
+    ${Eigen3_INCLUDE_DIRS}              # Eigen is header-only, so its includes are needed during compilation of cfar.cpp
   PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src     # For internal source files
+    ${ARMADILLO_INCLUDE_DIRS}           # Armadillo includes for cfar.cpp
 )
+
+target_link_libraries(cfar_lib PRIVATE ${ARMADILLO_LIBRARIES})
 
 # Create executables
 add_executable(cfar src/main.cpp)
@@ -69,12 +77,14 @@ rosidl_get_typesupport_target(cpp_typesupport_target
 # Link libraries
 target_link_libraries(cfar
   ${OpenCV_LIBRARIES}
+  ${ARMADILLO_LIBRARIES}
   cfar_lib
 )
 
 target_link_libraries(cfar_node
   ${cpp_typesupport_target}
   ${OpenCV_LIBRARIES}
+  ${ARMADILLO_LIBRARIES}
   cfar_lib
 )
 
@@ -88,7 +98,7 @@ install(
 
 install(
   TARGETS cfar cfar_node
-  DESTINATION lib/${PROJECT_NAME}
+  DESTINATION share/${PROJECT_NAME}
 )
 
 install(

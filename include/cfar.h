@@ -4,6 +4,9 @@
 #include <sstream>
 #include <chrono>
 
+#include <armadillo>
+#include <boost/math/special_functions/binomial.hpp>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core.hpp>
@@ -29,6 +32,7 @@ class CFAR
         CFAR(int train_cells, int guard_cells, float false_alarm_rate);
         ~CFAR();
 
+        double calc_multiplier();
         double retrieve_params(int train_cells, int guard_cells, float false_alarm_rate);
         int get_train_cells();
         int get_guard_cells();
