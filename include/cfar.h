@@ -43,5 +43,7 @@ class CFAR
         void soca_2d(cv::Mat& img, cv::Mat& des);
         void soca_1d_integral(cv::Mat& img, cv::Mat& des);
         void soca_2d_integral(cv::Mat& img, cv::Mat& des);
+        void soca_vert(cv::Mat& img, cv::Mat& des); // 2D SOCA with integral image and vertical configuration
+        void soca_quad(cv::Mat& img, cv::Mat& des); // 2D SOCA with integral image and quadrant configuration
         float calc_rect_sum(cv::Mat& img, int x, int y, int w, int h);
 };
