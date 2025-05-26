@@ -98,7 +98,7 @@ install(
 
 install(
   TARGETS cfar cfar_node
-  DESTINATION share/${PROJECT_NAME}
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 install(

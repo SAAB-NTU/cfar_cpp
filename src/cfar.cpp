@@ -5,21 +5,19 @@ CFAR::CFAR()
     
 }
 
-CFAR::CFAR(int train_cells, int guard_cells, float false_alarm_rate)
+CFAR::CFAR(int train_cells, int guard_cells, float Pfa)
 {
     assert(train_cells%2 == 0);
     assert(guard_cells%2 == 0);
     this->train_cells = train_cells;
     this->guard_cells = guard_cells;
-    this->false_alarm_rate = false_alarm_rate;
+    this->Pfa = Pfa;
 
     this->train_hs = this->train_cells/2;
     this->guard_hs = this->guard_cells/2;
     this->total_hs = this->train_hs + this->guard_hs;
     
-    // this->threshold_factor_SOCA = CFAR::retrieve_params(
-    //     this->train_cells, this->guard_cells, this->false_alarm_rate);
-    this->threshold_factor_SOCA = CFAR::calc_multiplier();
+    this->threshold_mul = CFAR::calcMultiplier();
 
     this->rank = this->train_cells/2;
     this->total_train_cells = this->train_hs * (2 * this->train_hs + 2 * this->guard_hs + 1);
@@ -29,10 +27,10 @@ CFAR::~CFAR()
 {
 }
 
-double CFAR::calc_multiplier()
+double CFAR::calcMultiplier()
 {
     arma::vec coeffs(this->train_cells, arma::fill::zeros);
-    coeffs.front() = -this->false_alarm_rate/2;
+    coeffs.front() = -this->Pfa/2;
     for (int i=0; i <= (this->train_cells/2 - 1); i++)
     {
         int index = this->train_cells/2 + i;
@@ -57,59 +55,20 @@ double CFAR::calc_multiplier()
     return (1/x - 2) * this->train_cells/2;
 }
 
-double CFAR::retrieve_params(int train_cells, int guard_cells, float false_alarm_rate)
-{
-    int train_num = (train_cells - 2)/2;
-    int guard_num = (guard_cells - 2)/2;
-    int false_rate_num = (int)((false_alarm_rate - 0.005)/0.005);
-    int line = train_num*1990 + guard_num*199 + false_rate_num + 1;
-
-    // TODO: change path to dynamic
-    std::fstream inputFile("/media/saab/f7ee81f1-4052-4c44-b470-0a4a650ee479/cfar_cpp/parameter_map.txt");
-    // std::fstream inputFile("parameter_map.txt");
-
-    if (!inputFile.is_open()) {
-        std::cerr << "Error opening the file!" << std::endl;
-        return -1; // Exit with error
-    }
-    int current_line = 0;
-    std::string data;
-
-    while (getline(inputFile, data)) {
-        current_line++;
-        if (current_line == line) {
-            // Extracts the threshold data from data string
-            std::stringstream ss(data);
-            std::string value;
-
-            // Read values until we reach the last two
-            for (int i = 0; i < 5; ++i) {
-                getline(ss, value, ',');
-                if (i == 3) {
-                    return stod(value);
-                }
-            }
-            break;
-        }
-    }
-    
-    return -1;
-}
-
-int CFAR::get_train_cells() {
+int CFAR::getTrainCells() {
     return this->train_cells;
 }
 
-int CFAR::get_guard_cells() {
+int CFAR::getGuardCells() {
     return this->guard_cells;
 }
 
-float CFAR::get_false_alarm_rate() {
-    return this->false_alarm_rate;
+float CFAR::getPfa() {
+    return this->Pfa;
 }
 
-float CFAR::get_threshold_factor_soca() {
-    return this->threshold_factor_SOCA;
+float CFAR::getThresholdMultiplier() {
+    return this->threshold_mul;
 }
 
 void CFAR::soca_2d(cv::Mat& img, cv::Mat& des)
@@ -141,7 +100,7 @@ void CFAR::soca_2d(cv::Mat& img, cv::Mat& des)
                 }
             }
             float sum_train = std::min(leading_sum, lagging_sum);
-            float num = (this->threshold_factor_SOCA * sum_train / total_train_cells);
+            float num = (this->threshold_mul * sum_train / this->total_train_cells);
             des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
         }
     }
@@ -200,7 +159,7 @@ void CFAR::soca_2d_integral(cv::Mat& img, cv::Mat& des)
             float lagging_sum = calc_rect_sum(trimmed_image, row - this->total_hs, col + 1, this->total_hs, (2 * this->total_hs + 1));
             float lagging_train = (total_lagging_cells > 0)?(lagging_sum - lagging_guard)/total_lagging_cells:0.0f;
 
-            float num = (this->threshold_factor_SOCA * std::min(leading_train, lagging_train));
+            float num = (this->threshold_mul * std::min(leading_train, lagging_train));
             des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
         }
     }
@@ -230,7 +189,7 @@ void CFAR::soca_1d(cv::Mat& img, cv::Mat& des) {
                 leading_sum += img_gray.at<uchar>(i, col);
             }
             float sum_train = std::min(leading_sum, lagging_sum);
-            float num = (this->threshold_factor_SOCA * sum_train / (2*this->train_hs));
+            float num = (this->threshold_mul * sum_train / (2*this->train_hs));
             des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
         }
     }
@@ -254,7 +213,7 @@ void CFAR::soca_1d_integral(cv::Mat& img, cv::Mat& des) {
             float leading_sum = calc_rect_sum(img_gray, row - this->guard_hs - this->train_hs, col, 0, this->train_hs);
             float lagging_sum = calc_rect_sum(img_gray, row + this->guard_hs, col, 0, this->train_hs);
             float sum_train = std::min(leading_sum, lagging_sum);
-            float num = (this->threshold_factor_SOCA * sum_train / (2*this->train_hs));
+            float num = (this->threshold_mul * sum_train / (2*this->train_hs));
             des.at<float>(row, col) = (img_gray.at<uchar>(row, col) > num) ? img_gray.at<uchar>(row, col) : 0.0f;
         }
     }

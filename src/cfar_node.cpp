@@ -48,11 +48,11 @@ class CfarNode: public rclcpp::Node
         void publish_cfar_info() {
             auto info = cfar_cpp::msg::CfarInfo();
             info.mode = this->mode;
-            info.train_cells = cfar_filter.get_train_cells();
-            info.guard_cells = cfar_filter.get_guard_cells();
+            info.train_cells = cfar_filter.getTrainCells();
+            info.guard_cells = cfar_filter.getGuardCells();
             // Round to 3 decimal places
-            info.false_alarm_rate = round(cfar_filter.get_false_alarm_rate() * 1000.0) / 1000.0;
-            info.threshold_factor = cfar_filter.get_threshold_factor_soca();
+            info.false_alarm_rate = round(cfar_filter.getPfa() * 1000.0) / 1000.0;
+            info.threshold_factor = cfar_filter.getThresholdMultiplier();
 
             cfar_info_publisher_->publish(info);
         }
@@ -67,28 +67,7 @@ class CfarNode: public rclcpp::Node
                 if (result.empty()) { 
                     result = cv::Mat::zeros(cv_ptr->image.rows, cv_ptr->image.cols, CV_32F);
                 }
-                auto start = std::chrono::high_resolution_clock::now();
-                // cfar_filter.soca_2d(cv_ptr->image, result);
                 cfar_filter.soca_2d_integral(cv_ptr->image, result);
-                // cfar_filter.soca_1d(cv_ptr->image, result);
-                // cfar_filter.soca_1d_integral(cv_ptr->image, result);
-                auto end = std::chrono::high_resolution_clock::now();
-                std::chrono::duration<double, std::milli> elapsed = end - start; // Time in milliseconds
-                // RCLCPP_INFO(this->get_logger(), "Execution time: %.3f ms", elapsed.count());
-
-                if (elapse_count < 100)
-                {
-                    elapse_total += elapsed.count();
-                    elapse_count ++;
-                }
-                else if (elapse_count == 100)
-                {
-                    double average = elapse_total/elapse_count;
-                    elapse_count = 0;
-                    elapse_total = 0;
-                    RCLCPP_INFO(this->get_logger(), "Average execution time: %.3f ms", average);
-                }
-
         
                 // TODO: move uint8 conversion to inside cfar_filter
                 cv::Mat result_uint8;
