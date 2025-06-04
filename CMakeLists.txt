@@ -26,7 +26,41 @@ find_package(image_transport REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(Armadillo REQUIRED)
 find_package(Eigen3 CONFIG REQUIRED)
+find_package(Boost REQUIRED)
+find_package(BLAS REQUIRED)
+find_package(LAPACK REQUIRED)
+find_package(ament_cmake_python REQUIRED)
 
+
+find_package(Python 3.10 COMPONENTS Interpreter Development REQUIRED)
+find_package(pybind11 CONFIG REQUIRED)
+
+pybind11_add_module(pycfar
+    src/cfar.cpp
+    src/cfar_bindings.cpp
+    src/utils/ndarray_converter.cpp
+)
+
+target_link_libraries(pycfar 
+  PRIVATE 
+    ${OpenCV_LIBS}
+    # ${Armadillo_LIBRARIES}
+    armadillo
+    ${Boost_LIBRARIES}
+    ${BLAS_LIBRARIES}
+    ${LAPACK_LIBRARIES}
+)
+
+target_include_directories(pycfar
+  PRIVATE
+    ${pybind11_INCLUDE_DIRS}
+)
+
+set_target_properties(pycfar PROPERTIES
+    INSTALL_RPATH_USE_LINK_PATH TRUE
+    BUILD_WITH_INSTALL_RPATH TRUE
+    INSTALL_RPATH "${OpenCV_LIBRARY_DIRS}"
+)
 
 # Generate interfaces
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -56,12 +90,6 @@ target_link_libraries(cfar_lib PRIVATE ${ARMADILLO_LIBRARIES})
 add_executable(cfar src/main.cpp)
 add_executable(cfar_node src/cfar_node.cpp src/cfar.cpp)
 
-# Add dependencies
-# ament_target_dependencies(cfar 
-#   rclcpp 
-#   std_msgs 
-#   sensor_msgs
-# )
 ament_target_dependencies(cfar_node 
   rclcpp 
   std_msgs 
@@ -74,7 +102,6 @@ ament_target_dependencies(cfar_node
 rosidl_get_typesupport_target(cpp_typesupport_target
   ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
-# Link libraries
 target_link_libraries(cfar
   ${OpenCV_LIBRARIES}
   ${ARMADILLO_LIBRARIES}
@@ -99,6 +126,10 @@ install(
 install(
   TARGETS cfar cfar_node
   DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS pycfar
+  DESTINATION ${PYTHON_INSTALL_DIR}/${PROJECT_NAME}
 )
 
 install(

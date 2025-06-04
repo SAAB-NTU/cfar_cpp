@@ -6,7 +6,7 @@
 
 #include <cv_bridge/cv_bridge.h>
 
-#include<chrono>
+#include <chrono>
 
 class CfarNode: public rclcpp::Node
 {
@@ -67,9 +67,7 @@ class CfarNode: public rclcpp::Node
                 if (result.empty()) { 
                     result = cv::Mat::zeros(cv_ptr->image.rows, cv_ptr->image.cols, CV_32F);
                 }
-                // cfar_filter.soca_2d_integral(cv_ptr->image, result);
-                cfar_filter.soca_vert(cv_ptr->image, result);
-                // cfar_filter.soca_quad(cv_ptr->image, result);
+                result = cfar_filter.soca_2d(cv_ptr->image);
         
                 // TODO: move uint8 conversion to inside cfar_filter
                 cv::Mat result_uint8;

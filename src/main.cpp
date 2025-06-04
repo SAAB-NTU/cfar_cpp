@@ -24,8 +24,8 @@ int main()
     std::cout << "SOCA threshold factor: " << cfar.getThresholdMultiplier() << "\n";
     cv::Mat result_1d = cv::Mat::zeros(image.size(), CV_32F);
     cv::Mat result_2d = cv::Mat::zeros(image.size(), CV_32F);
-    cfar.soca_1d(image, result_1d);
-    cfar.soca_2d_integral(image, result_2d);
+    result_1d = cfar.soca_1d(image);
+    result_2d = cfar.soca_2d(image);
     cv::normalize(result_1d, result_1d, 0, 255, cv::NORM_MINMAX, CV_8UC1);
     cv::normalize(result_2d, result_2d, 0, 255, cv::NORM_MINMAX, CV_8UC1);
 
