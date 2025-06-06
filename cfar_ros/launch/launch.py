@@ -6,13 +6,13 @@ from launch_ros.actions import Node
 def generate_launch_description():
     ld = LaunchDescription()
     config = os.path.join(
-        get_package_share_directory('cfar_cpp'),
+        get_package_share_directory('cfar_ros'),
         'cfg',
         'config.yaml'
         )
         
     node=Node(
-        package = 'cfar_cpp',
+        package = 'cfar_ros',
         name = 'cfar_node',
         executable = 'cfar_node',
         parameters = [config]

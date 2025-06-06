@@ -2,7 +2,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/image.hpp"
-#include "cfar_cpp/msg/cfar_info.hpp"
+#include "cfar_ros/msg/cfar_info.hpp"
 
 #include <cv_bridge/cv_bridge.h>
 
@@ -19,7 +19,7 @@ class CfarNode: public rclcpp::Node
             
             rclcpp::QoS qos_latch(1);
             qos_latch.durability(rclcpp::DurabilityPolicy::TransientLocal);
-            cfar_info_publisher_ = this->create_publisher<cfar_cpp::msg::CfarInfo>("/cfar/info", qos_latch);
+            cfar_info_publisher_ = this->create_publisher<cfar_ros::msg::CfarInfo>("/cfar/info", qos_latch);
 
             // Read from config.yaml
             this->declare_parameter<std::string>("mode","soca");
@@ -46,7 +46,7 @@ class CfarNode: public rclcpp::Node
     
     private:
         void publish_cfar_info() {
-            auto info = cfar_cpp::msg::CfarInfo();
+            auto info = cfar_ros::msg::CfarInfo();
             info.mode = this->mode;
             info.train_cells = cfar_filter.getTrainCells();
             info.guard_cells = cfar_filter.getGuardCells();
@@ -98,7 +98,7 @@ class CfarNode: public rclcpp::Node
         float false_alarm_rate;
 
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr sonar_subscriber_;
-        rclcpp::Publisher<cfar_cpp::msg::CfarInfo>::SharedPtr cfar_info_publisher_;
+        rclcpp::Publisher<cfar_ros::msg::CfarInfo>::SharedPtr cfar_info_publisher_;
         rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr cfar_publisher_;
 
         CFAR cfar_filter;

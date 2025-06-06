@@ -30,7 +30,7 @@ git clone https://github.com/SAAB-NTU/cfar_cpp.git
 ```
 2. **Install dependencies**
 * Install the related dependencies:
-```
+```bash
 sudo apt update
 sudo apt install -y \
   ros-${ROS_DISTRO}-cv-bridge \
@@ -38,10 +38,9 @@ sudo apt install -y \
   libarmadillo-dev \
   libeigen3-dev \
   libboost-dev \
-
 ```
 3. **Build the package**
-```
+```bash
 # Go back to the workspace root
 cd ~/ros2_ws
 
@@ -50,14 +49,13 @@ colcon build --symlink-install --packages-select cfar_cpp
 
 # Make sure to source the workspace for usage
 source install/setup.bash
-
 ```
 
 ## Usage
 This package provides a Python launch file to launch `cfar_node`. It is linked with `cfg/config.yaml` for the CFAR parameters. The instructions for tuning such parameters are provided.
 
 To launch the `cfar_node`:
-```
+```bash
 # Source the workspace
 source install/setup.bash
 

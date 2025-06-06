@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcfar.a CMakeFiles/cfar.dir/src/cfar.cpp.o
+/usr/bin/ranlib libcfar.a
