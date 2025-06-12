@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from cfar_cpp/msg/CfarInfo.msg
+// generated code does not contain a copyright notice
+
+
+module cfar_cpp {
+  module msg {
+    struct CfarInfo {
+      string mode;
+
+      int64 train_cells;
+
+      int64 guard_cells;
+
+      double false_alarm_rate;
+
+      double threshold_factor;
+    };
+  };
+};

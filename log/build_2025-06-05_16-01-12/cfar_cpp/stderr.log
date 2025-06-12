@@ -1,0 +1,10 @@
+In file included from [01m[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.cpp:4[m[K:
+[01m[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:[m[K In static member function ‘[01m[Kstatic pybind11::handle pybind11::detail::type_caster<cv::Mat>::cast(const cv::Mat&, pybind11::return_value_policy, pybind11::handle)[m[K’:
+[01m[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:34:70:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdefval[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   34 |     static handle cast(const cv::Mat &m, return_value_policy, [01;35m[Khandle defval[m[K) {
+      |                                                               [01;35m[K~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/uwr/cfar_cpp/src/cfar_bindings.cpp:6[m[K:
+[01m[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:[m[K In static member function ‘[01m[Kstatic pybind11::handle pybind11::detail::type_caster<cv::Mat>::cast(const cv::Mat&, pybind11::return_value_policy, pybind11::handle)[m[K’:
+[01m[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:34:70:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdefval[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   34 |     static handle cast(const cv::Mat &m, return_value_policy, [01;35m[Khandle defval[m[K) {
+      |                                                               [01;35m[K~~~~~~~^~~~~~[m[K

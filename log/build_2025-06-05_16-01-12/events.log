@@ -1,0 +1,596 @@
+[0.000000] (-) TimerEvent: {}
+[0.000173] (cfar_cpp) JobQueued: {'identifier': 'cfar_cpp', 'dependencies': OrderedDict()}
+[0.000228] (cfar_cpp) JobStarted: {'identifier': 'cfar_cpp'}
+[0.010818] (cfar_cpp) JobProgress: {'identifier': 'cfar_cpp', 'progress': 'cmake'}
+[0.010920] (cfar_cpp) Command: {'cmd': ['/usr/bin/cmake', '/home/uwr/cfar_cpp', '-DCMAKE_INSTALL_PREFIX=/home/uwr/cfar_cpp/install/cfar_cpp'], 'cwd': '/home/uwr/cfar_cpp/build/cfar_cpp', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_SG:en'), ('USER', 'uwr'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/uwr/oculus_driver/install/lib:/home/uwr/Desktop/2024_UWR/install/sonar_msgs/lib:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces/lib:/home/uwr/fls_ws/install/oculus_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/uwr'), ('OLDPWD', '/home/uwr'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1575'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/uwr/fls_ws/install:/home/uwr/Desktop/2024_UWR/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'uwr'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'uwr'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/uwr/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/uwr-Latitude-5310:@/tmp/.ICE-unix/1545,unix/uwr-Latitude-5310:/tmp/.ICE-unix/1545'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7583362f_0492_4ca7_badd_b6f0b1c07edf'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.CUQX72'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.107'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/uwr/Desktop/2024_UWR/install/sonar_subs:/home/uwr/Desktop/2024_UWR/install/kalman_filter:/home/uwr/Desktop/2024_UWR/install/sonar_msgs:/home/uwr/Desktop/2024_UWR/install/ros2-driver:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/ntrip:/home/uwr/Desktop/2024_UWR/install/adnav-driver:/home/uwr/fls_ws/install/oculus_interfaces:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/uwr/cfar_cpp/build/cfar_cpp'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/uwr/Desktop/2024_UWR/install/sonar_subs/lib/python3.10/site-packages:/home/uwr/Desktop/2024_UWR/install/sonar_msgs/local/lib/python3.10/dist-packages:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces/local/lib/python3.10/dist-packages:/home/uwr/fls_ws/install/oculus_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/uwr/Desktop/2024_UWR/install/kalman_filter:/home/uwr/Desktop/2024_UWR/install/sonar_msgs:/home/uwr/Desktop/2024_UWR/install/ros2-driver:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/ntrip:/home/uwr/Desktop/2024_UWR/install/adnav-driver:/home/uwr/fls_ws/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/sonar_subs:/opt/ros/humble')]), 'shell': False}
+[0.099477] (-) TimerEvent: {}
+[0.119909] (cfar_cpp) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.199608] (-) TimerEvent: {}
+[0.201514] (cfar_cpp) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.210682] (cfar_cpp) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.276182] (cfar_cpp) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.283244] (cfar_cpp) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.283690] (cfar_cpp) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.284381] (cfar_cpp) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.287569] (cfar_cpp) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.299736] (-) TimerEvent: {}
+[0.359656] (cfar_cpp) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.366807] (cfar_cpp) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.367304] (cfar_cpp) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.367808] (cfar_cpp) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.372743] (cfar_cpp) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.399880] (-) TimerEvent: {}
+[0.500202] (-) TimerEvent: {}
+[0.526398] (cfar_cpp) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.600344] (-) TimerEvent: {}
+[0.641651] (cfar_cpp) StdoutLine: {'line': b'-- Found OpenCV: /usr (found version "4.5.4") \n'}
+[0.644141] (cfar_cpp) StdoutLine: {'line': b'-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.699006] (cfar_cpp) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.700443] (-) TimerEvent: {}
+[0.706019] (cfar_cpp) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.717002] (cfar_cpp) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.736249] (cfar_cpp) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.756941] (cfar_cpp) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.800557] (-) TimerEvent: {}
+[0.814753] (cfar_cpp) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.818870] (cfar_cpp) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.900706] (-) TimerEvent: {}
+[0.909651] (cfar_cpp) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.937924] (cfar_cpp) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.977214] (cfar_cpp) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.988041] (cfar_cpp) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.000868] (-) TimerEvent: {}
+[1.061633] (cfar_cpp) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.062089] (cfar_cpp) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.101042] (-) TimerEvent: {}
+[1.126924] (cfar_cpp) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.128302] (cfar_cpp) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.196437] (cfar_cpp) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[1.201137] (-) TimerEvent: {}
+[1.236854] (cfar_cpp) StdoutLine: {'line': b'-- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)\n'}
+[1.241386] (cfar_cpp) StdoutLine: {'line': b'-- Found image_transport: 3.1.9 (/opt/ros/humble/share/image_transport/cmake)\n'}
+[1.280009] (cfar_cpp) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.292869] (cfar_cpp) StdoutLine: {'line': b'-- Found Armadillo: /usr/include (found version "10.8.2") \n'}
+[1.301249] (-) TimerEvent: {}
+[1.308251] (cfar_cpp) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0")  \n'}
+[1.311300] (cfar_cpp) StdoutLine: {'line': b'-- Looking for sgemm_\n'}
+[1.374957] (cfar_cpp) StdoutLine: {'line': b'-- Looking for sgemm_ - not found\n'}
+[1.401374] (-) TimerEvent: {}
+[1.414778] (cfar_cpp) StdoutLine: {'line': b'-- Looking for sgemm_\n'}
+[1.480357] (cfar_cpp) StdoutLine: {'line': b'-- Looking for sgemm_ - found\n'}
+[1.480778] (cfar_cpp) StdoutLine: {'line': b'-- Found BLAS: /usr/lib/x86_64-linux-gnu/libblas.so  \n'}
+[1.501481] (-) TimerEvent: {}
+[1.522659] (cfar_cpp) StdoutLine: {'line': b'-- Looking for cheev_\n'}
+[1.588639] (cfar_cpp) StdoutLine: {'line': b'-- Looking for cheev_ - not found\n'}
+[1.599570] (cfar_cpp) StdoutLine: {'line': b'-- Looking for cheev_\n'}
+[1.601590] (-) TimerEvent: {}
+[1.653036] (cfar_cpp) StdoutLine: {'line': b'-- Looking for cheev_ - not found\n'}
+[1.653658] (cfar_cpp) StdoutLine: {'line': b'-- Looking for cheev_\n'}
+[1.701739] (-) TimerEvent: {}
+[1.730694] (cfar_cpp) StdoutLine: {'line': b'-- Looking for cheev_ - found\n'}
+[1.731231] (cfar_cpp) StdoutLine: {'line': b'-- Found LAPACK: /usr/lib/x86_64-linux-gnu/liblapack.so;/usr/lib/x86_64-linux-gnu/libblas.so  \n'}
+[1.801885] (-) TimerEvent: {}
+[1.902221] (-) TimerEvent: {}
+[2.002546] (-) TimerEvent: {}
+[2.031810] (cfar_cpp) StdoutLine: {'line': b'-- Found Python: /usr/bin/python3.10 (found suitable version "3.10.12", minimum required is "3.10") found components: Interpreter Development Development.Module Development.Embed \n'}
+[2.078771] (cfar_cpp) StdoutLine: {'line': b'-- Performing Test HAS_FLTO\n'}
+[2.102672] (-) TimerEvent: {}
+[2.202580] (cfar_cpp) StdoutLine: {'line': b'-- Performing Test HAS_FLTO - Success\n'}
+[2.202766] (-) TimerEvent: {}
+[2.203431] (cfar_cpp) StdoutLine: {'line': b'-- Found pybind11: /home/uwr/.local/include (found version "2.13.6")\n'}
+[2.302938] (-) TimerEvent: {}
+[2.403368] (-) TimerEvent: {}
+[2.480741] (cfar_cpp) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[2.503461] (-) TimerEvent: {}
+[2.603714] (-) TimerEvent: {}
+[2.704019] (-) TimerEvent: {}
+[2.804297] (-) TimerEvent: {}
+[2.852777] (cfar_cpp) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.904434] (-) TimerEvent: {}
+[2.994787] (cfar_cpp) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.004548] (-) TimerEvent: {}
+[3.018574] (cfar_cpp) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[3.020760] (cfar_cpp) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[3.047878] (cfar_cpp) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[3.048363] (cfar_cpp) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.048491] (cfar_cpp) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[3.048568] (cfar_cpp) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[3.068863] (cfar_cpp) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[3.104686] (-) TimerEvent: {}
+[3.121111] (cfar_cpp) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[3.204838] (-) TimerEvent: {}
+[3.305148] (-) TimerEvent: {}
+[3.405445] (-) TimerEvent: {}
+[3.505718] (-) TimerEvent: {}
+[3.543240] (cfar_cpp) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[3.545312] (cfar_cpp) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/uwr/cfar_cpp/include;$<BUILD_INTERFACE:/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_generator_c>;$<BUILD_INTERFACE:/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_typesupport_fastrtps_c>;$<BUILD_INTERFACE:/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_generator_cpp>;$<BUILD_INTERFACE:/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_typesupport_fastrtps_cpp>;$<BUILD_INTERFACE:/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_typesupport_introspection_c>;$<BUILD_INTERFACE:/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_typesupport_introspection_cpp>;/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_generator_c;/home/uwr/cfar_cpp/build/cfar_cpp/rosidl_generator_py;/home/uwr/cfar_cpp/src\n'}
+[3.545462] (cfar_cpp) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[3.596172] (cfar_cpp) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[3.605818] (-) TimerEvent: {}
+[3.694771] (cfar_cpp) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[3.705915] (-) TimerEvent: {}
+[3.748235] (cfar_cpp) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[3.806000] (-) TimerEvent: {}
+[3.906295] (-) TimerEvent: {}
+[4.006552] (-) TimerEvent: {}
+[4.106896] (-) TimerEvent: {}
+[4.148681] (cfar_cpp) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[4.148949] (cfar_cpp) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[4.199386] (cfar_cpp) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.202554] (cfar_cpp) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.206960] (-) TimerEvent: {}
+[4.253634] (cfar_cpp) StdoutLine: {'line': b'-- Generating done\n'}
+[4.257179] (cfar_cpp) StdoutLine: {'line': b'-- Build files have been written to: /home/uwr/cfar_cpp/build/cfar_cpp\n'}
+[4.269620] (cfar_cpp) CommandEnded: {'returncode': 0}
+[4.270529] (cfar_cpp) JobProgress: {'identifier': 'cfar_cpp', 'progress': 'build'}
+[4.271839] (cfar_cpp) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/uwr/cfar_cpp/build/cfar_cpp', '--', '-j8', '-l8'], 'cwd': '/home/uwr/cfar_cpp/build/cfar_cpp', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_SG:en'), ('USER', 'uwr'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/uwr/oculus_driver/install/lib:/home/uwr/Desktop/2024_UWR/install/sonar_msgs/lib:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces/lib:/home/uwr/fls_ws/install/oculus_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/uwr'), ('OLDPWD', '/home/uwr'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1575'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/uwr/fls_ws/install:/home/uwr/Desktop/2024_UWR/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'uwr'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'uwr'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/uwr/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/uwr-Latitude-5310:@/tmp/.ICE-unix/1545,unix/uwr-Latitude-5310:/tmp/.ICE-unix/1545'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7583362f_0492_4ca7_badd_b6f0b1c07edf'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.CUQX72'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.107'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/uwr/Desktop/2024_UWR/install/sonar_subs:/home/uwr/Desktop/2024_UWR/install/kalman_filter:/home/uwr/Desktop/2024_UWR/install/sonar_msgs:/home/uwr/Desktop/2024_UWR/install/ros2-driver:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/ntrip:/home/uwr/Desktop/2024_UWR/install/adnav-driver:/home/uwr/fls_ws/install/oculus_interfaces:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/uwr/cfar_cpp/build/cfar_cpp'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/uwr/Desktop/2024_UWR/install/sonar_subs/lib/python3.10/site-packages:/home/uwr/Desktop/2024_UWR/install/sonar_msgs/local/lib/python3.10/dist-packages:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces/local/lib/python3.10/dist-packages:/home/uwr/fls_ws/install/oculus_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/uwr/Desktop/2024_UWR/install/kalman_filter:/home/uwr/Desktop/2024_UWR/install/sonar_msgs:/home/uwr/Desktop/2024_UWR/install/ros2-driver:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/ntrip:/home/uwr/Desktop/2024_UWR/install/adnav-driver:/home/uwr/fls_ws/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/sonar_subs:/opt/ros/humble')]), 'shell': False}
+[4.307179] (-) TimerEvent: {}
+[4.310427] (cfar_cpp) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[4.324567] (cfar_cpp) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding CXX object CMakeFiles/cfar_lib.dir/src/cfar.cpp.o\x1b[0m\n'}
+[4.326817] (cfar_cpp) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object CMakeFiles/pycfar.dir/src/utils/ndarray_converter.cpp.o\x1b[0m\n'}
+[4.327172] (cfar_cpp) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding CXX object CMakeFiles/pycfar.dir/src/cfar.cpp.o\x1b[0m\n'}
+[4.327405] (cfar_cpp) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object CMakeFiles/pycfar.dir/src/cfar_bindings.cpp.o\x1b[0m\n'}
+[4.331614] (cfar_cpp) StdoutLine: {'line': b'[ 14%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[4.346355] (cfar_cpp) StdoutLine: {'line': b'[ 14%] Built target ament_cmake_python_copy_cfar_cpp\n'}
+[4.407262] (-) TimerEvent: {}
+[4.507637] (-) TimerEvent: {}
+[4.608048] (-) TimerEvent: {}
+[4.708411] (-) TimerEvent: {}
+[4.808815] (-) TimerEvent: {}
+[4.880443] (cfar_cpp) StdoutLine: {'line': b'running egg_info\n'}
+[4.883861] (cfar_cpp) StdoutLine: {'line': b'creating cfar_cpp.egg-info\n'}
+[4.884369] (cfar_cpp) StdoutLine: {'line': b'writing cfar_cpp.egg-info/PKG-INFO\n'}
+[4.884714] (cfar_cpp) StdoutLine: {'line': b'writing dependency_links to cfar_cpp.egg-info/dependency_links.txt\n'}
+[4.885070] (cfar_cpp) StdoutLine: {'line': b'writing top-level names to cfar_cpp.egg-info/top_level.txt\n'}
+[4.885497] (cfar_cpp) StdoutLine: {'line': b"writing manifest file 'cfar_cpp.egg-info/SOURCES.txt'\n"}
+[4.889790] (cfar_cpp) StdoutLine: {'line': b"reading manifest file 'cfar_cpp.egg-info/SOURCES.txt'\n"}
+[4.890745] (cfar_cpp) StdoutLine: {'line': b"writing manifest file 'cfar_cpp.egg-info/SOURCES.txt'\n"}
+[4.908929] (-) TimerEvent: {}
+[4.950637] (cfar_cpp) StdoutLine: {'line': b'[ 14%] Built target ament_cmake_python_build_cfar_cpp_egg\n'}
+[4.959611] (cfar_cpp) StdoutLine: {'line': b'[ 14%] Built target cfar_cpp__cpp\n'}
+[4.978990] (cfar_cpp) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.979299] (cfar_cpp) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.979535] (cfar_cpp) StdoutLine: {'line': b'[ 21%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[5.002151] (cfar_cpp) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding C object CMakeFiles/cfar_cpp__rosidl_generator_c.dir/rosidl_generator_c/cfar_cpp/msg/detail/cfar_info__functions.c.o\x1b[0m\n'}
+[5.009082] (-) TimerEvent: {}
+[5.111872] (-) TimerEvent: {}
+[5.113921] (cfar_cpp) StdoutLine: {'line': b'[ 26%] \x1b[32m\x1b[1mLinking C shared library lib/libcfar_cpp__rosidl_generator_c.so\x1b[0m\n'}
+[5.186916] (cfar_cpp) StdoutLine: {'line': b'[ 26%] Built target cfar_cpp__rosidl_generator_c\n'}
+[5.204295] (cfar_cpp) StdoutLine: {'line': b'[ 28%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[5.214858] (-) TimerEvent: {}
+[5.315188] (-) TimerEvent: {}
+[5.415528] (-) TimerEvent: {}
+[5.515884] (-) TimerEvent: {}
+[5.569118] (cfar_cpp) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/cfar_cpp__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/cfar_cpp/msg/cfar_info__type_support.cpp.o\x1b[0m\n'}
+[5.588791] (cfar_cpp) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/cfar_cpp__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/cfar_cpp/msg/detail/cfar_info__type_support.cpp.o\x1b[0m\n'}
+[5.615999] (-) TimerEvent: {}
+[5.622903] (cfar_cpp) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/cfar_cpp__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/cfar_cpp/msg/detail/dds_fastrtps/cfar_info__type_support.cpp.o\x1b[0m\n'}
+[5.716119] (-) TimerEvent: {}
+[5.816491] (-) TimerEvent: {}
+[5.843475] (cfar_cpp) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/cfar_cpp__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/cfar_cpp/msg/detail/cfar_info__type_support_c.cpp.o\x1b[0m\n'}
+[5.916615] (-) TimerEvent: {}
+[6.017018] (-) TimerEvent: {}
+[6.117397] (-) TimerEvent: {}
+[6.202843] (cfar_cpp) StdoutLine: {'line': b'[ 40%] \x1b[32m\x1b[1mLinking CXX shared library lib/libcfar_cpp__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[6.219987] (-) TimerEvent: {}
+[6.293031] (cfar_cpp) StdoutLine: {'line': b'[ 40%] Built target cfar_cpp__rosidl_typesupport_cpp\n'}
+[6.315033] (cfar_cpp) StdoutLine: {'line': b'[ 42%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[6.321922] (-) TimerEvent: {}
+[6.422630] (-) TimerEvent: {}
+[6.479171] (cfar_cpp) StdoutLine: {'line': b'[ 45%] \x1b[32m\x1b[1mLinking CXX shared library lib/libcfar_cpp__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[6.522744] (-) TimerEvent: {}
+[6.570541] (cfar_cpp) StdoutLine: {'line': b'[ 47%] \x1b[32m\x1b[1mLinking CXX shared library lib/libcfar_cpp__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[6.623022] (-) TimerEvent: {}
+[6.628369] (cfar_cpp) StdoutLine: {'line': b'[ 47%] Built target cfar_cpp__rosidl_typesupport_introspection_cpp\n'}
+[6.648519] (cfar_cpp) StdoutLine: {'line': b'[ 50%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[6.704480] (cfar_cpp) StdoutLine: {'line': b'[ 52%] \x1b[32m\x1b[1mLinking CXX shared library lib/libcfar_cpp__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[6.723145] (-) TimerEvent: {}
+[6.751725] (cfar_cpp) StdoutLine: {'line': b'[ 52%] Built target cfar_cpp__rosidl_typesupport_fastrtps_cpp\n'}
+[6.823879] (-) TimerEvent: {}
+[6.870681] (cfar_cpp) StdoutLine: {'line': b'[ 52%] Built target cfar_cpp__rosidl_typesupport_fastrtps_c\n'}
+[6.924006] (-) TimerEvent: {}
+[6.949123] (cfar_cpp) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding C object CMakeFiles/cfar_cpp__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/cfar_cpp/msg/detail/cfar_info__type_support.c.o\x1b[0m\n'}
+[7.021462] (cfar_cpp) StdoutLine: {'line': b'[ 57%] \x1b[32m\x1b[1mLinking C shared library lib/libcfar_cpp__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[7.024108] (-) TimerEvent: {}
+[7.081239] (cfar_cpp) StdoutLine: {'line': b'[ 57%] Built target cfar_cpp__rosidl_typesupport_introspection_c\n'}
+[7.090333] (cfar_cpp) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.cpp:4\x1b[m\x1b[K:\n'}
+[7.090641] (cfar_cpp) StderrLine: {'line': b'\x1b[01m\x1b[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic pybind11::handle pybind11::detail::type_caster<cv::Mat>::cast(const cv::Mat&, pybind11::return_value_policy, pybind11::handle)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.090831] (cfar_cpp) StderrLine: {'line': b'\x1b[01m\x1b[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:34:70:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kdefval\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.091010] (cfar_cpp) StderrLine: {'line': b'   34 |     static handle cast(const cv::Mat &m, return_value_policy, \x1b[01;35m\x1b[Khandle defval\x1b[m\x1b[K) {\n'}
+[7.091183] (cfar_cpp) StderrLine: {'line': b'      |                                                               \x1b[01;35m\x1b[K~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[7.124240] (-) TimerEvent: {}
+[7.224633] (-) TimerEvent: {}
+[7.231249] (cfar_cpp) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/cfar_cpp__rosidl_typesupport_c.dir/rosidl_typesupport_c/cfar_cpp/msg/cfar_info__type_support.cpp.o\x1b[0m\n'}
+[7.293075] (cfar_cpp) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library lib/libcfar_cpp__rosidl_typesupport_c.so\x1b[0m\n'}
+[7.324759] (-) TimerEvent: {}
+[7.376700] (cfar_cpp) StdoutLine: {'line': b'[ 61%] Built target cfar_cpp__rosidl_typesupport_c\n'}
+[7.414342] (cfar_cpp) StdoutLine: {'line': b'[ 61%] Built target cfar_cpp\n'}
+[7.424881] (-) TimerEvent: {}
+[7.453151] (cfar_cpp) StdoutLine: {'line': b'[ 64%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[7.524986] (-) TimerEvent: {}
+[7.625324] (-) TimerEvent: {}
+[7.725675] (-) TimerEvent: {}
+[7.826044] (-) TimerEvent: {}
+[7.926368] (-) TimerEvent: {}
+[8.026726] (-) TimerEvent: {}
+[8.127081] (-) TimerEvent: {}
+[8.230880] (-) TimerEvent: {}
+[8.266419] (cfar_cpp) StdoutLine: {'line': b'[ 64%] Built target cfar_cpp__py\n'}
+[8.302687] (cfar_cpp) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding C object CMakeFiles/cfar_cpp__rosidl_generator_py.dir/rosidl_generator_py/cfar_cpp/msg/_cfar_info_s.c.o\x1b[0m\n'}
+[8.330994] (-) TimerEvent: {}
+[8.431360] (-) TimerEvent: {}
+[8.531814] (-) TimerEvent: {}
+[8.567934] (cfar_cpp) StdoutLine: {'line': b'[ 69%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/cfar_cpp/libcfar_cpp__rosidl_generator_py.so\x1b[0m\n'}
+[8.621831] (cfar_cpp) StdoutLine: {'line': b'[ 69%] Built target cfar_cpp__rosidl_generator_py\n'}
+[8.631902] (-) TimerEvent: {}
+[8.652162] (cfar_cpp) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding C object CMakeFiles/cfar_cpp__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/cfar_cpp/_cfar_cpp_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[8.656978] (cfar_cpp) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding C object CMakeFiles/cfar_cpp__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/cfar_cpp/_cfar_cpp_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[8.660184] (cfar_cpp) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding C object CMakeFiles/cfar_cpp__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/cfar_cpp/_cfar_cpp_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[8.732032] (-) TimerEvent: {}
+[8.796521] (cfar_cpp) StdoutLine: {'line': b'[ 78%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/cfar_cpp/cfar_cpp_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[8.832151] (-) TimerEvent: {}
+[8.846228] (cfar_cpp) StdoutLine: {'line': b'[ 78%] Built target cfar_cpp__rosidl_typesupport_introspection_c__pyext\n'}
+[8.880526] (cfar_cpp) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/cfar_cpp/cfar_cpp_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[8.880966] (cfar_cpp) StdoutLine: {'line': b'[ 83%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/cfar_cpp/cfar_cpp_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[8.932576] (-) TimerEvent: {}
+[8.948300] (cfar_cpp) StdoutLine: {'line': b'[ 83%] Built target cfar_cpp__rosidl_typesupport_fastrtps_c__pyext\n'}
+[8.952847] (cfar_cpp) StdoutLine: {'line': b'[ 83%] Built target cfar_cpp__rosidl_typesupport_c__pyext\n'}
+[9.032698] (-) TimerEvent: {}
+[9.133036] (-) TimerEvent: {}
+[9.233335] (-) TimerEvent: {}
+[9.333716] (-) TimerEvent: {}
+[9.434072] (-) TimerEvent: {}
+[9.534395] (-) TimerEvent: {}
+[9.634726] (-) TimerEvent: {}
+[9.735079] (-) TimerEvent: {}
+[9.835401] (-) TimerEvent: {}
+[9.935739] (-) TimerEvent: {}
+[10.036084] (-) TimerEvent: {}
+[10.136428] (-) TimerEvent: {}
+[10.236770] (-) TimerEvent: {}
+[10.337081] (-) TimerEvent: {}
+[10.437381] (-) TimerEvent: {}
+[10.537758] (-) TimerEvent: {}
+[10.638085] (-) TimerEvent: {}
+[10.738413] (-) TimerEvent: {}
+[10.838756] (-) TimerEvent: {}
+[10.939062] (-) TimerEvent: {}
+[11.039373] (-) TimerEvent: {}
+[11.139715] (-) TimerEvent: {}
+[11.240035] (-) TimerEvent: {}
+[11.340315] (-) TimerEvent: {}
+[11.440635] (-) TimerEvent: {}
+[11.540952] (-) TimerEvent: {}
+[11.641267] (-) TimerEvent: {}
+[11.741574] (-) TimerEvent: {}
+[11.841882] (-) TimerEvent: {}
+[11.942208] (-) TimerEvent: {}
+[12.042537] (-) TimerEvent: {}
+[12.103710] (cfar_cpp) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/uwr/cfar_cpp/src/cfar_bindings.cpp:6\x1b[m\x1b[K:\n'}
+[12.103919] (cfar_cpp) StderrLine: {'line': b'\x1b[01m\x1b[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic pybind11::handle pybind11::detail::type_caster<cv::Mat>::cast(const cv::Mat&, pybind11::return_value_policy, pybind11::handle)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.104018] (cfar_cpp) StderrLine: {'line': b'\x1b[01m\x1b[K/home/uwr/cfar_cpp/src/utils/ndarray_converter.h:34:70:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kdefval\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[12.104110] (cfar_cpp) StderrLine: {'line': b'   34 |     static handle cast(const cv::Mat &m, return_value_policy, \x1b[01;35m\x1b[Khandle defval\x1b[m\x1b[K) {\n'}
+[12.104193] (cfar_cpp) StderrLine: {'line': b'      |                                                               \x1b[01;35m\x1b[K~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[12.142628] (-) TimerEvent: {}
+[12.242899] (-) TimerEvent: {}
+[12.343184] (-) TimerEvent: {}
+[12.443479] (-) TimerEvent: {}
+[12.543814] (-) TimerEvent: {}
+[12.644143] (-) TimerEvent: {}
+[12.668016] (cfar_cpp) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking CXX shared library lib/libcfar_lib.so\x1b[0m\n'}
+[12.744255] (-) TimerEvent: {}
+[12.775230] (cfar_cpp) StdoutLine: {'line': b'[ 85%] Built target cfar_lib\n'}
+[12.799991] (cfar_cpp) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object CMakeFiles/cfar_node.dir/src/cfar.cpp.o\x1b[0m\n'}
+[12.800265] (cfar_cpp) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object CMakeFiles/cfar_node.dir/src/cfar_node.cpp.o\x1b[0m\n'}
+[12.800425] (cfar_cpp) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object CMakeFiles/cfar.dir/src/main.cpp.o\x1b[0m\n'}
+[12.844396] (-) TimerEvent: {}
+[12.944851] (-) TimerEvent: {}
+[13.045238] (-) TimerEvent: {}
+[13.145557] (-) TimerEvent: {}
+[13.245879] (-) TimerEvent: {}
+[13.346266] (-) TimerEvent: {}
+[13.446642] (-) TimerEvent: {}
+[13.547025] (-) TimerEvent: {}
+[13.647412] (-) TimerEvent: {}
+[13.747785] (-) TimerEvent: {}
+[13.848181] (-) TimerEvent: {}
+[13.948561] (-) TimerEvent: {}
+[14.048953] (-) TimerEvent: {}
+[14.149418] (-) TimerEvent: {}
+[14.249831] (-) TimerEvent: {}
+[14.350238] (-) TimerEvent: {}
+[14.450625] (-) TimerEvent: {}
+[14.550989] (-) TimerEvent: {}
+[14.651346] (-) TimerEvent: {}
+[14.751759] (-) TimerEvent: {}
+[14.809236] (cfar_cpp) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking CXX shared module lib/pycfar.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[14.851908] (-) TimerEvent: {}
+[14.952320] (-) TimerEvent: {}
+[15.052679] (-) TimerEvent: {}
+[15.153101] (-) TimerEvent: {}
+[15.253461] (-) TimerEvent: {}
+[15.353834] (-) TimerEvent: {}
+[15.454219] (-) TimerEvent: {}
+[15.554595] (-) TimerEvent: {}
+[15.655041] (-) TimerEvent: {}
+[15.755409] (-) TimerEvent: {}
+[15.855767] (-) TimerEvent: {}
+[15.956147] (-) TimerEvent: {}
+[16.056522] (-) TimerEvent: {}
+[16.156891] (-) TimerEvent: {}
+[16.257264] (-) TimerEvent: {}
+[16.357646] (-) TimerEvent: {}
+[16.458022] (-) TimerEvent: {}
+[16.558393] (-) TimerEvent: {}
+[16.658775] (-) TimerEvent: {}
+[16.759156] (-) TimerEvent: {}
+[16.859529] (-) TimerEvent: {}
+[16.959907] (-) TimerEvent: {}
+[17.060308] (-) TimerEvent: {}
+[17.160691] (-) TimerEvent: {}
+[17.261106] (-) TimerEvent: {}
+[17.361485] (-) TimerEvent: {}
+[17.461926] (-) TimerEvent: {}
+[17.562359] (-) TimerEvent: {}
+[17.662747] (-) TimerEvent: {}
+[17.763130] (-) TimerEvent: {}
+[17.863523] (-) TimerEvent: {}
+[17.963912] (-) TimerEvent: {}
+[18.064352] (-) TimerEvent: {}
+[18.164769] (-) TimerEvent: {}
+[18.265184] (-) TimerEvent: {}
+[18.336428] (cfar_cpp) StdoutLine: {'line': b'[ 95%] Built target pycfar\n'}
+[18.365307] (-) TimerEvent: {}
+[18.465647] (-) TimerEvent: {}
+[18.566010] (-) TimerEvent: {}
+[18.666371] (-) TimerEvent: {}
+[18.766763] (-) TimerEvent: {}
+[18.867147] (-) TimerEvent: {}
+[18.967543] (-) TimerEvent: {}
+[19.067960] (-) TimerEvent: {}
+[19.168381] (-) TimerEvent: {}
+[19.268760] (-) TimerEvent: {}
+[19.369151] (-) TimerEvent: {}
+[19.469548] (-) TimerEvent: {}
+[19.517433] (cfar_cpp) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking CXX executable bin/cfar\x1b[0m\n'}
+[19.569687] (-) TimerEvent: {}
+[19.670010] (-) TimerEvent: {}
+[19.770311] (-) TimerEvent: {}
+[19.870610] (-) TimerEvent: {}
+[19.955471] (cfar_cpp) StdoutLine: {'line': b'[ 97%] Built target cfar\n'}
+[19.970751] (-) TimerEvent: {}
+[20.071092] (-) TimerEvent: {}
+[20.171419] (-) TimerEvent: {}
+[20.271753] (-) TimerEvent: {}
+[20.372093] (-) TimerEvent: {}
+[20.472404] (-) TimerEvent: {}
+[20.572688] (-) TimerEvent: {}
+[20.673032] (-) TimerEvent: {}
+[20.773352] (-) TimerEvent: {}
+[20.873645] (-) TimerEvent: {}
+[20.973997] (-) TimerEvent: {}
+[21.074262] (-) TimerEvent: {}
+[21.174582] (-) TimerEvent: {}
+[21.274899] (-) TimerEvent: {}
+[21.375214] (-) TimerEvent: {}
+[21.475534] (-) TimerEvent: {}
+[21.575922] (-) TimerEvent: {}
+[21.676219] (-) TimerEvent: {}
+[21.776536] (-) TimerEvent: {}
+[21.876865] (-) TimerEvent: {}
+[21.977201] (-) TimerEvent: {}
+[22.077514] (-) TimerEvent: {}
+[22.177845] (-) TimerEvent: {}
+[22.278116] (-) TimerEvent: {}
+[22.378411] (-) TimerEvent: {}
+[22.478682] (-) TimerEvent: {}
+[22.578981] (-) TimerEvent: {}
+[22.679266] (-) TimerEvent: {}
+[22.779576] (-) TimerEvent: {}
+[22.879923] (-) TimerEvent: {}
+[22.980288] (-) TimerEvent: {}
+[23.080559] (-) TimerEvent: {}
+[23.180912] (-) TimerEvent: {}
+[23.281237] (-) TimerEvent: {}
+[23.381553] (-) TimerEvent: {}
+[23.481908] (-) TimerEvent: {}
+[23.582204] (-) TimerEvent: {}
+[23.682529] (-) TimerEvent: {}
+[23.782849] (-) TimerEvent: {}
+[23.883194] (-) TimerEvent: {}
+[23.983521] (-) TimerEvent: {}
+[24.083889] (-) TimerEvent: {}
+[24.184214] (-) TimerEvent: {}
+[24.284501] (-) TimerEvent: {}
+[24.384783] (-) TimerEvent: {}
+[24.485138] (-) TimerEvent: {}
+[24.585444] (-) TimerEvent: {}
+[24.685760] (-) TimerEvent: {}
+[24.786107] (-) TimerEvent: {}
+[24.886408] (-) TimerEvent: {}
+[24.986708] (-) TimerEvent: {}
+[25.087027] (-) TimerEvent: {}
+[25.187328] (-) TimerEvent: {}
+[25.287640] (-) TimerEvent: {}
+[25.387987] (-) TimerEvent: {}
+[25.488280] (-) TimerEvent: {}
+[25.588593] (-) TimerEvent: {}
+[25.688924] (-) TimerEvent: {}
+[25.789226] (-) TimerEvent: {}
+[25.889532] (-) TimerEvent: {}
+[25.989863] (-) TimerEvent: {}
+[26.090175] (-) TimerEvent: {}
+[26.190464] (-) TimerEvent: {}
+[26.290766] (-) TimerEvent: {}
+[26.391122] (-) TimerEvent: {}
+[26.491423] (-) TimerEvent: {}
+[26.591734] (-) TimerEvent: {}
+[26.692034] (-) TimerEvent: {}
+[26.792336] (-) TimerEvent: {}
+[26.892640] (-) TimerEvent: {}
+[26.992996] (-) TimerEvent: {}
+[27.093309] (-) TimerEvent: {}
+[27.193666] (-) TimerEvent: {}
+[27.294017] (-) TimerEvent: {}
+[27.394346] (-) TimerEvent: {}
+[27.480563] (cfar_cpp) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable bin/cfar_node\x1b[0m\n'}
+[27.494474] (-) TimerEvent: {}
+[27.594796] (-) TimerEvent: {}
+[27.695171] (-) TimerEvent: {}
+[27.795562] (-) TimerEvent: {}
+[27.895877] (-) TimerEvent: {}
+[27.996135] (-) TimerEvent: {}
+[28.096442] (-) TimerEvent: {}
+[28.153374] (cfar_cpp) StdoutLine: {'line': b'[100%] Built target cfar_node\n'}
+[28.165084] (cfar_cpp) CommandEnded: {'returncode': 0}
+[28.196572] (-) TimerEvent: {}
+[28.241138] (cfar_cpp) JobProgress: {'identifier': 'cfar_cpp', 'progress': 'install'}
+[28.249611] (cfar_cpp) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/uwr/cfar_cpp/build/cfar_cpp'], 'cwd': '/home/uwr/cfar_cpp/build/cfar_cpp', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_SG:en'), ('USER', 'uwr'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/uwr/oculus_driver/install/lib:/home/uwr/Desktop/2024_UWR/install/sonar_msgs/lib:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces/lib:/home/uwr/fls_ws/install/oculus_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/uwr'), ('OLDPWD', '/home/uwr'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1575'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/uwr/fls_ws/install:/home/uwr/Desktop/2024_UWR/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'uwr'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'uwr'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/uwr/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/uwr-Latitude-5310:@/tmp/.ICE-unix/1545,unix/uwr-Latitude-5310:/tmp/.ICE-unix/1545'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7583362f_0492_4ca7_badd_b6f0b1c07edf'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.CUQX72'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.107'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/uwr/Desktop/2024_UWR/install/sonar_subs:/home/uwr/Desktop/2024_UWR/install/kalman_filter:/home/uwr/Desktop/2024_UWR/install/sonar_msgs:/home/uwr/Desktop/2024_UWR/install/ros2-driver:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/ntrip:/home/uwr/Desktop/2024_UWR/install/adnav-driver:/home/uwr/fls_ws/install/oculus_interfaces:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/uwr/cfar_cpp/build/cfar_cpp'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/uwr/Desktop/2024_UWR/install/sonar_subs/lib/python3.10/site-packages:/home/uwr/Desktop/2024_UWR/install/sonar_msgs/local/lib/python3.10/dist-packages:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces/local/lib/python3.10/dist-packages:/home/uwr/fls_ws/install/oculus_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/uwr/Desktop/2024_UWR/install/kalman_filter:/home/uwr/Desktop/2024_UWR/install/sonar_msgs:/home/uwr/Desktop/2024_UWR/install/ros2-driver:/home/uwr/Desktop/2024_UWR/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/ntrip:/home/uwr/Desktop/2024_UWR/install/adnav-driver:/home/uwr/fls_ws/install/oculus_interfaces:/home/uwr/Desktop/2024_UWR/install/sonar_subs:/opt/ros/humble')]), 'shell': False}
+[28.257437] (cfar_cpp) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[28.257731] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/ament_index/resource_index/rosidl_interfaces/cfar_cpp\n'}
+[28.258026] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp\n'}
+[28.258288] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg\n'}
+[28.258434] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/rosidl_generator_c__visibility_control.h\n'}
+[28.258522] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail\n'}
+[28.258601] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__type_support.h\n'}
+[28.258717] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__functions.h\n'}
+[28.258791] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__functions.c\n'}
+[28.258926] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__struct.h\n'}
+[28.259003] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/cfar_info.h\n'}
+[28.259098] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/library_path.sh\n'}
+[28.260311] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/library_path.dsv\n'}
+[28.260595] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_generator_c.so\n'}
+[28.260826] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_generator_c.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.260967] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp\n'}
+[28.261125] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg\n'}
+[28.261220] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail\n'}
+[28.261308] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__rosidl_typesupport_fastrtps_c.h\n'}
+[28.261451] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[28.261556] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_fastrtps_c.so\n'}
+[28.261656] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_fastrtps_c.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.261771] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp\n'}
+[28.261898] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg\n'}
+[28.261999] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/cfar_info.hpp\n'}
+[28.262110] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail\n'}
+[28.262183] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__struct.hpp\n'}
+[28.262259] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__builder.hpp\n'}
+[28.262368] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__traits.hpp\n'}
+[28.262446] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp\n'}
+[28.262522] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg\n'}
+[28.262636] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail\n'}
+[28.262709] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[28.262797] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/dds_fastrtps\n'}
+[28.262976] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[28.263045] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_fastrtps_cpp.so\n'}
+[28.263132] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_fastrtps_cpp.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.263249] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp\n'}
+[28.263332] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg\n'}
+[28.263406] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[28.263479] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail\n'}
+[28.263581] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__rosidl_typesupport_introspection_c.h\n'}
+[28.263659] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__type_support.c\n'}
+[28.263755] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_introspection_c.so\n'}
+[28.263888] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_introspection_c.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.264011] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_c.so\n'}
+[28.264190] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_c.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.264291] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp\n'}
+[28.264399] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg\n'}
+[28.264474] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail\n'}
+[28.264546] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__type_support.cpp\n'}
+[28.264648] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar_cpp/msg/detail/cfar_info__rosidl_typesupport_introspection_cpp.hpp\n'}
+[28.264724] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_introspection_cpp.so\n'}
+[28.264845] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_introspection_cpp.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.264978] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_cpp.so\n'}
+[28.265211] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_typesupport_cpp.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.265340] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/pythonpath.sh\n'}
+[28.265434] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/pythonpath.dsv\n'}
+[28.265558] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp-0.0.0-py3.10.egg-info\n'}
+[28.265732] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[28.265873] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[28.266005] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[28.266106] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[28.266307] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp\n'}
+[28.266406] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[28.266535] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/libcfar_cpp__rosidl_generator_py.so\n'}
+[28.266649] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/_cfar_cpp_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[28.266752] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[28.266929] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[28.267040] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/msg\n'}
+[28.267140] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/msg/_cfar_info_s.c\n'}
+[28.267243] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/msg/__init__.py\n'}
+[28.267374] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/msg/_cfar_info.py\n'}
+[28.267469] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/_cfar_cpp_s.ep.rosidl_typesupport_c.c\n'}
+[28.267565] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/__init__.py\n'}
+[28.267660] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/_cfar_cpp_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[28.296666] (-) TimerEvent: {}
+[28.304810] (cfar_cpp) StdoutLine: {'line': b"Listing '/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp'...\n"}
+[28.305036] (cfar_cpp) StdoutLine: {'line': b"Compiling '/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/__init__.py'...\n"}
+[28.305120] (cfar_cpp) StdoutLine: {'line': b"Listing '/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/msg'...\n"}
+[28.305194] (cfar_cpp) StdoutLine: {'line': b"Compiling '/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/msg/__init__.py'...\n"}
+[28.305264] (cfar_cpp) StdoutLine: {'line': b"Compiling '/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/msg/_cfar_info.py'...\n"}
+[28.309679] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[28.310005] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.310283] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[28.310643] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.310848] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[28.311144] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/cfar_cpp_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.311401] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_generator_py.so\n'}
+[28.311624] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_cpp__rosidl_generator_py.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib"\n'}
+[28.311742] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/msg/CfarInfo.idl\n'}
+[28.311893] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/msg/CfarInfo.msg\n'}
+[28.312029] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_lib.so\n'}
+[28.312433] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/libcfar_lib.so" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib"\n'}
+[28.312621] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/cfar_cpp/cfar\n'}
+[28.313122] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/cfar_cpp/cfar" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib"\n'}
+[28.313239] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/lib/cfar_cpp/cfar_node\n'}
+[28.315673] (cfar_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/uwr/cfar_cpp/install/cfar_cpp/lib/cfar_cpp/cfar_node" to "/home/uwr/cfar_cpp/install/cfar_cpp/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib"\n'}
+[28.315814] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/local/lib/python3.10/dist-packages/cfar_cpp/pycfar.cpython-310-x86_64-linux-gnu.so\n'}
+[28.316362] (cfar_cpp) StdoutLine: {'line': b'-- Up-to-date: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp\n'}
+[28.316492] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/include/cfar_cpp/cfar.h\n'}
+[28.316694] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/launch\n'}
+[28.316776] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/launch/launch.py\n'}
+[28.317051] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cfg\n'}
+[28.317169] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cfg/config.yaml\n'}
+[28.317438] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/ament_index/resource_index/package_run_dependencies/cfar_cpp\n'}
+[28.317582] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/ament_index/resource_index/parent_prefix_path/cfar_cpp\n'}
+[28.317701] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/ament_prefix_path.sh\n'}
+[28.317837] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/ament_prefix_path.dsv\n'}
+[28.318001] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/path.sh\n'}
+[28.318290] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/environment/path.dsv\n'}
+[28.318446] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/local_setup.bash\n'}
+[28.318597] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/local_setup.sh\n'}
+[28.318695] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/local_setup.zsh\n'}
+[28.318807] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/local_setup.dsv\n'}
+[28.318985] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/package.dsv\n'}
+[28.319153] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/ament_index/resource_index/packages/cfar_cpp\n'}
+[28.319319] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_generator_cExport.cmake\n'}
+[28.319453] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_generator_cExport-noconfig.cmake\n'}
+[28.319596] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[28.319731] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[28.319931] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_generator_cppExport.cmake\n'}
+[28.320072] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[28.320203] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[28.320343] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_introspection_cExport.cmake\n'}
+[28.320473] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[28.320610] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_cExport.cmake\n'}
+[28.320743] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[28.320901] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[28.321036] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[28.321179] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_cppExport.cmake\n'}
+[28.321314] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cpp__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[28.321453] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_generator_pyExport.cmake\n'}
+[28.321582] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/export_cfar_cpp__rosidl_generator_pyExport-noconfig.cmake\n'}
+[28.321720] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/rosidl_cmake-extras.cmake\n'}
+[28.321862] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[28.321994] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[28.322118] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[28.322246] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[28.322371] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[28.322532] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[28.322684] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cppConfig.cmake\n'}
+[28.322805] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/cmake/cfar_cppConfig-version.cmake\n'}
+[28.322959] (cfar_cpp) StdoutLine: {'line': b'-- Installing: /home/uwr/cfar_cpp/install/cfar_cpp/share/cfar_cpp/package.xml\n'}
+[28.325659] (cfar_cpp) CommandEnded: {'returncode': 0}
+[28.396752] (-) TimerEvent: {}
+[28.423867] (cfar_cpp) JobEnded: {'identifier': 'cfar_cpp', 'rc': 0}
+[28.424991] (-) EventReactorShutdown: {}
